@@ -1,0 +1,30 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+*.log
+
+# Dependencies (falls später npm/yarn verwendet)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build outputs (falls später ein Build-Process hinzukommt)
+dist/
+build/
+.next/
+
+# Cache
+.cache/
+*.tmp
