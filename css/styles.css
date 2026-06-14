@@ -5,6 +5,25 @@
     box-sizing: border-box;
 }
 
+/* VT323 Pixel Font – applies to all headings, logo, tagline, team names */
+.nav-brand,
+.hero-content h1,
+.hero-tagline,
+.features h2,
+.features-single h2,
+.feature-highlights h3,
+.how-it-works h2,
+.team-section h2,
+.team-content h3,
+.sponsors-section h2,
+.cta-section h2,
+.highlight-card h4,
+.step h3,
+.step-number {
+    font-family: 'VT323', monospace;
+    letter-spacing: 1px;
+}
+
 :root {
     --primary-color: #FF6B9D;      /* Rosa */
     --secondary-color: #C44569;    /* Dunkelrosa */
@@ -36,6 +55,40 @@ body {
     padding: 0 20px;
 }
 
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #999;
+    cursor: pointer;
+    padding: 2px 6px;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+
+.lang-btn:hover {
+    color: var(--primary-color);
+}
+
+.lang-btn.active {
+    color: var(--primary-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.lang-divider {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
 /* Navigation */
 .navbar {
     background: rgba(255, 255, 255, 0.95);
@@ -54,9 +107,10 @@ body {
 }
 
 .nav-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: normal;
     color: var(--primary-color);
+    letter-spacing: 2px;
 }
 
 .nav-links {
@@ -92,23 +146,24 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 4rem;
-    font-weight: 900;
-    line-height: 1.1;
+    font-size: 6rem;
+    font-weight: normal;
+    line-height: 1;
     margin: 0.5rem 0 1.5rem 0;
     color: var(--dark-color);
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: 3px;
 }
 
 .hero-tagline {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: normal;
     color: var(--primary-color);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     margin-bottom: 0.5rem;
 }
 
@@ -384,9 +439,11 @@ body {
 }
 
 .team-content h3 {
-    font-size: 2rem;
+    font-size: 2.8rem;
+    font-weight: normal;
     color: var(--dark-color);
     margin-bottom: 1rem;
+    letter-spacing: 2px;
 }
 
 .team-content p {
@@ -525,7 +582,7 @@ body {
     }
 
     .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 3.5rem;
     }
 
     .hero-content .hero-subtitle {
@@ -533,7 +590,7 @@ body {
     }
 
     .hero-tagline {
-        font-size: 0.95rem;
+        font-size: 1.3rem;
     }
 
     .hero-image {
@@ -609,7 +666,7 @@ body {
 
 @media (max-width: 480px) {
     .hero-content h1 {
-        font-size: 1.8rem;
+        font-size: 2.8rem;
     }
 
     .hero-content .hero-subtitle {
@@ -617,7 +674,7 @@ body {
     }
 
     .hero-tagline {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
     }
 
     .problem-text {

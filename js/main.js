@@ -40,9 +40,10 @@ function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         const button = event.target;
         const originalText = button.textContent;
-        button.textContent = '✓ Kopiert!';
+        const lang = localStorage.getItem('language') || 'de';
+        button.textContent = translations[lang]['copied'];
         button.style.opacity = '0.8';
-        
+
         setTimeout(() => {
             button.textContent = originalText;
             button.style.opacity = '1';
