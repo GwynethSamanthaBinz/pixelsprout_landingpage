@@ -33,9 +33,13 @@
                 <div class="hero-tagline" data-i18n="hero.tagline"><img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> Ein Zuhause für deine Ziele</div>
                 <h1>PixelSprout</h1>
                 <p class="hero-subtitle" data-i18n="hero.subtitle">Ziele sind oft überwältigend. PixelSprout verwandelt sie in einen interaktiven Garten: Jedes Ziel wird zu einer Pflanze, die mit deinen Meilensteinen wächst. Strukturiere, verfolge und erlebe deine Erfolge in einer wunderschönen Pixel-Art-Welt.</p>
-                <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
-                    <span data-i18n="hero.cta">Kontaktiere uns • Testperson werden</span>
-                </button>
+                <p class="hero-handmade" data-i18n="hero.handmade">Jeder Pixel von Hand. Keine KI.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
+                        <span data-i18n="hero.cta">Kontaktiere uns • Testperson werden</span>
+                    </button>
+                    <a href="#draw" class="btn cta-draw-btn" data-i18n="cta.draw">Pixel für Pixel</a>
+                </div>
             </div>
             <div class="hero-image">
                 <div class="phone-wrapper">
@@ -120,6 +124,18 @@
         </div>
     </section>
 
+    <!-- Draw / Process Section -->
+    <section id="draw" class="draw-section">
+        <div class="container">
+            <h2 data-i18n="draw.title">Sieh mir beim Zeichnen zu</h2>
+            <p class="draw-subtitle" data-i18n="draw.subtitle">Jeder Pixel ist von Hand gezeichnet — keine KI, echte Handarbeit. Hier bekommst du bald einen Blick hinter die Kulissen.</p>
+            <div class="video-placeholder">
+                <div class="video-play-icon">&#9654;</div>
+                <p class="video-coming-soon" data-i18n="draw.coming">Timelapse kommt bald</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Das Team Section -->
     <section class="team-section">
         <div class="container">
@@ -171,6 +187,7 @@
                 </button>
             </div>
             <p class="cta-note" data-i18n="cta.note">Hast du Fragen, Feedback oder möchtest Testperson sein? Kontaktiere uns gerne! <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"></p>
+            <p class="cta-handmade" data-i18n="cta.handmade">Jeder Pixel von Hand. Keine KI.</p>
         </div>
     </section>
 
