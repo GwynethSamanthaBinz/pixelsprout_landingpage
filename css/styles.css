@@ -20,7 +20,7 @@
 .highlight-card h4,
 .step h3,
 .step-number {
-    font-family: 'VT323', monospace;
+    font-family: 'Press Start 2P', monospace;
     letter-spacing: 1px;
 }
 
@@ -65,8 +65,8 @@ body {
 .lang-btn {
     background: none;
     border: none;
-    font-family: 'VT323', monospace;
-    font-size: 1.2rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem;
     color: #999;
     cursor: pointer;
     padding: 2px 6px;
@@ -107,10 +107,10 @@ body {
 }
 
 .nav-brand {
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: normal;
     color: var(--primary-color);
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .nav-links {
@@ -146,25 +146,26 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 6rem;
+    font-size: 3.2rem;
     font-weight: normal;
-    line-height: 1;
+    line-height: 1.3;
     margin: 0.5rem 0 1.5rem 0;
     color: var(--dark-color);
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 .hero-tagline {
-    font-size: 1.6rem;
+    font-size: 0.7rem;
     font-weight: normal;
     color: var(--primary-color);
     text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+    line-height: 2;
 }
 
 .hero-content .hero-subtitle {
@@ -216,10 +217,37 @@ body {
     align-items: center;
 }
 
+.phone-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.phone-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -35px;
+    border-radius: 60px;
+    background:
+        radial-gradient(ellipse at 28% 12%, rgba(255, 183, 197, 0.75) 0%, transparent 48%),
+        radial-gradient(ellipse at 72% 12%, rgba(135, 206, 250, 0.65) 0%, transparent 48%),
+        radial-gradient(ellipse at 18% 75%, rgba(107, 203, 119, 0.60) 0%, transparent 50%),
+        radial-gradient(ellipse at 82% 75%, rgba(107, 203, 119, 0.55) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(255, 199, 95, 0.45) 0%, transparent 50%);
+    filter: blur(28px);
+    z-index: -1;
+    animation: glowPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { opacity: 0.75; transform: scale(0.97); }
+    to   { opacity: 1;    transform: scale(1.02); }
+}
+
+.phone-wrapper video,
 .hero-image img {
     max-width: 100%;
     height: auto;
-    filter: drop-shadow(0 20px 60px rgba(255, 107, 157, 0.25));
+    display: block;
     animation: slideInRight 0.8s ease-out;
 }
 
@@ -243,10 +271,11 @@ body {
 }
 
 .features h2 {
-    font-size: 2.8rem;
+    font-size: 1.4rem;
     text-align: center;
     margin-bottom: 60px;
     color: var(--dark-color);
+    line-height: 1.8;
 }
 
 /* Problem Section */
@@ -298,10 +327,11 @@ body {
 }
 
 .feature-highlights h3 {
-    font-size: 2.2rem;
+    font-size: 1.1rem;
     text-align: center;
     margin-bottom: 50px;
     color: var(--dark-color);
+    line-height: 1.8;
 }
 
 .highlights-grid {
@@ -332,10 +362,11 @@ body {
 }
 
 .highlight-card h4 {
-    font-size: 1.3rem;
+    font-size: 0.7rem;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: normal;
+    line-height: 2;
 }
 
 .highlight-card p {
@@ -351,10 +382,11 @@ body {
 }
 
 .how-it-works h2 {
-    font-size: 2.8rem;
+    font-size: 1.4rem;
     text-align: center;
     margin-bottom: 60px;
     color: var(--dark-color);
+    line-height: 1.8;
 }
 
 .steps {
@@ -380,15 +412,16 @@ body {
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
 .step h3 {
-    font-size: 1.3rem;
+    font-size: 0.7rem;
     color: var(--dark-color);
     margin-bottom: 0.5rem;
+    line-height: 2;
 }
 
 .step p {
@@ -409,10 +442,11 @@ body {
 }
 
 .team-section h2 {
-    font-size: 2.8rem;
+    font-size: 1.4rem;
     text-align: center;
     margin-bottom: 60px;
     color: var(--dark-color);
+    line-height: 1.8;
 }
 
 .team-card {
@@ -439,11 +473,12 @@ body {
 }
 
 .team-content h3 {
-    font-size: 2.8rem;
+    font-size: 1.2rem;
     font-weight: normal;
     color: var(--dark-color);
     margin-bottom: 1rem;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    line-height: 2;
 }
 
 .team-content p {
@@ -464,10 +499,11 @@ body {
 }
 
 .sponsors-section h2 {
-    font-size: 2.8rem;
+    font-size: 1.4rem;
     text-align: center;
     margin-bottom: 60px;
     color: var(--dark-color);
+    line-height: 1.8;
 }
 
 .sponsors-grid {
@@ -476,30 +512,27 @@ body {
     gap: 40px;
 }
 
-.sponsor-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
-}
-
-.placeholder-image {
-    width: 200px;
-    height: 150px;
-    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 199, 95, 0.1));
-    border: 2px dashed rgba(255, 107, 157, 0.3);
-    border-radius: 10px;
+.sponsor-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
-    color: rgba(255, 107, 157, 0.2);
+    padding: 20px;
 }
 
-.sponsor-placeholder p {
-    font-weight: 600;
-    color: #666;
+.sponsor-logo img {
+    max-width: 220px;
+    max-height: 120px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(20%);
+    opacity: 0.85;
+    transition: all 0.3s ease;
+}
+
+.sponsor-logo img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
 }
 
 /* CTA Section */
@@ -513,8 +546,9 @@ body {
 }
 
 .cta-section h2 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    line-height: 2;
 }
 
 .cta-section p {
@@ -576,30 +610,54 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Navbar: Brand + Lang nebeneinander, Links darunter */
+    .navbar .container {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-brand {
+        font-size: 0.75rem;
+    }
+
+    /* Hero */
     .hero .container {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
+    .hero-content {
+        text-align: center;
+    }
+
     .hero-content h1 {
-        font-size: 3.5rem;
+        font-size: 1.8rem;
     }
 
     .hero-content .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .hero-tagline {
-        font-size: 1.3rem;
+        font-size: 0.5rem;
     }
 
     .hero-image {
-        max-width: 320px;
+        max-width: 300px;
         margin: 0 auto;
     }
 
+    /* Features */
     .problem-text {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .features h2,
@@ -608,116 +666,149 @@ body {
     .team-section h2,
     .sponsors-section h2,
     .cta-section h2 {
-        font-size: 2rem;
+        font-size: 0.9rem;
     }
 
     .core-idea {
-        padding: 30px;
+        padding: 25px;
         font-size: 1rem;
     }
 
     .highlight-card {
-        padding: 30px;
+        padding: 25px;
     }
 
-    .highlight-icon {
-        font-size: 2.5rem;
-    }
-
-    .nav-links {
-        gap: 1rem;
-    }
-
+    /* Steps */
     .steps {
         flex-direction: column;
+        align-items: center;
     }
 
     .arrow {
         display: none;
     }
 
+    /* CTA */
+    .cta-section {
+        margin: 40px 10px;
+        padding: 60px 20px;
+    }
+
     .cta-contact {
         flex-direction: column;
+        align-items: stretch;
     }
 
     .cta-contact .btn {
         width: 100%;
+        word-break: break-all;
+        font-size: 0.75rem;
+        padding: 14px 16px;
     }
 
+    /* Team */
     .team-card {
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 30px;
+        text-align: center;
+    }
+
+    .team-image {
+        justify-content: center;
     }
 
     .team-image img {
-        max-width: 300px;
+        max-width: 260px;
     }
 
     .team-content h3 {
-        font-size: 1.5rem;
+        font-size: 0.85rem;
     }
 
+    /* Sponsors */
     .sponsors-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+
+    .sponsor-logo img {
+        max-width: 180px;
+    }
 }
 
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-
-    .hero-content .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .hero-tagline {
-        font-size: 1.1rem;
-    }
-
-    .problem-text {
-        font-size: 1.1rem;
-    }
-
-    .btn {
-        padding: 12px 30px;
-        font-size: 1rem;
-    }
-
     .nav-brand {
-        font-size: 1.2rem;
+        font-size: 0.6rem;
     }
 
     .nav-links {
-        gap: 0.5rem;
+        font-size: 0.65rem;
+        gap: 1rem;
+    }
+
+    .lang-btn {
+        font-size: 0.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.2rem;
+    }
+
+    .hero-content .hero-subtitle {
         font-size: 0.9rem;
     }
 
+    .hero-tagline {
+        font-size: 0.42rem;
+    }
+
+    .hero-image {
+        max-width: 260px;
+    }
+
+    .problem-text {
+        font-size: 1rem;
+    }
+
+    .features h2,
+    .feature-highlights h3,
+    .how-it-works h2,
+    .team-section h2,
+    .sponsors-section h2,
+    .cta-section h2 {
+        font-size: 0.75rem;
+    }
+
     .core-idea {
-        padding: 20px;
-        font-size: 0.95rem;
+        padding: 18px;
+        font-size: 0.9rem;
     }
 
     .highlight-card {
-        padding: 20px;
-    }
-
-    .highlight-icon {
-        font-size: 2.5rem;
+        padding: 18px;
     }
 
     .highlight-card h4 {
-        font-size: 1.1rem;
+        font-size: 0.6rem;
     }
 
     .highlight-card p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    .cta-contact .btn {
+        font-size: 0.6rem;
+        padding: 12px 14px;
     }
 
     .team-card {
-        padding: 20px;
+        padding: 18px;
     }
 
     .team-image img {
@@ -725,19 +816,38 @@ body {
     }
 
     .team-content h3 {
-        font-size: 1.3rem;
+        font-size: 0.7rem;
     }
 
     .team-content p {
-        font-size: 1rem;
-    }
-
-    .placeholder-image {
-        width: 150px;
-        height: 120px;
-    }
-
-    .sponsor-placeholder p {
         font-size: 0.95rem;
     }
+
+    .sponsor-logo img {
+        max-width: 150px;
+    }
+}
+
+/* Logo Icon – ersetzt 🌱 Emoji überall */
+.logo-icon {
+    display: inline-block;
+    vertical-align: middle;
+    image-rendering: pixelated;
+}
+
+.logo-icon--nav {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 4px;
+}
+
+.logo-icon--lg {
+    width: 6rem;
+    height: 6rem;
+}
+
+.logo-icon--inline {
+    width: 2.2em;
+    height: 2.2em;
+    vertical-align: -0.5em;
 }

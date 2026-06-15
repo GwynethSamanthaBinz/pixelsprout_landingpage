@@ -6,14 +6,14 @@
     <title>PixelSprout - Strukturiere Deine Ziele im Pixel-Art-Stil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">🌱 PixelSprout</div>
+            <div class="nav-brand"><img src="img/logo.png" alt="" class="logo-icon logo-icon--nav"> PixelSprout</div>
             <ul class="nav-links">
                 <li><a href="#features" data-i18n="nav.features">Features</a></li>
                 <li><a href="#cta" data-i18n="nav.download">Download</a></li>
@@ -30,7 +30,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-tagline" data-i18n="hero.tagline">✨ Ein Zuhause für deine Ziele</div>
+                <div class="hero-tagline" data-i18n="hero.tagline"><img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> Ein Zuhause für deine Ziele</div>
                 <h1>PixelSprout</h1>
                 <p class="hero-subtitle" data-i18n="hero.subtitle">Ziele sind oft überwältigend. PixelSprout verwandelt sie in einen interaktiven Garten: Jedes Ziel wird zu einer Pflanze, die mit deinen Meilensteinen wächst. Strukturiere, verfolge und erlebe deine Erfolge in einer wunderschönen Pixel-Art-Welt.</p>
                 <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
@@ -38,7 +38,12 @@
                 </button>
             </div>
             <div class="hero-image">
-                <img src="img/image.png" alt="PixelSprout App Screenshot" loading="lazy">
+                <div class="phone-wrapper">
+                    <video autoplay loop muted playsinline>
+                        <source src="img/Mockupvidhomescreen.mp4" type="video/mp4">
+                        <img src="img/image.png" alt="PixelSprout App Screenshot" loading="lazy">
+                    </video>
+                </div>
             </div>
         </div>
     </section>
@@ -64,17 +69,17 @@
                 <h3 data-i18n="highlights.title">So funktioniert's</h3>
                 <div class="highlights-grid">
                     <div class="highlight-card">
-                        <div class="highlight-icon">🌱</div>
+                        <div class="highlight-icon"><img src="img/logo.png" alt="" class="logo-icon logo-icon--lg"></div>
                         <h4 data-i18n="h1.title">Garten wächst mit deinen Zielen</h4>
                         <p data-i18n="h1.desc">Jedes erreichte Ziel lässt deine Pflanze wachsen. Visueller Fortschritt, den du sehen kannst.</p>
                     </div>
                     <div class="highlight-card">
-                        <div class="highlight-icon">📊</div>
+                        <div class="highlight-icon"><img src="img/logo.png" alt="" class="logo-icon logo-icon--lg"></div>
                         <h4 data-i18n="h2.title">Fortschritt wird sichtbar</h4>
                         <p data-i18n="h2.desc">Keine versteckten Statistiken. Dein Garten ist dein Spiegel. Jeder Meilenstein zählt.</p>
                     </div>
                     <div class="highlight-card">
-                        <div class="highlight-icon">✨</div>
+                        <div class="highlight-icon"><img src="img/logo.png" alt="" class="logo-icon logo-icon--lg"></div>
                         <h4 data-i18n="h3.title">Keine Überforderung, nur Struktur</h4>
                         <p data-i18n="h3.desc">Zerlege Ziele in kleinere, erreichbare Meilensteine. Spielerisch, nicht stressig.</p>
                     </div>
@@ -125,9 +130,9 @@
                 </div>
                 <div class="team-content">
                     <h3>Gwyneth Binz</h3>
-                    <p data-i18n="team.desc">Leidenschaftliche Kreative und Gründerin von PixelSprout. Mit einer Vorliebe für intuitive Design und Pixel-Art erschaffe ich digitale Erlebnisse, die Menschen dabei helfen, ihre Ziele zu strukturieren und zu erreichen. Jedes Projekt ist ein neues Abenteuer! 🌱</p>
+                    <p data-i18n="team.desc">Leidenschaftliche Kreative und Gründerin von PixelSprout. Mit einer Vorliebe für intuitive Design und Pixel-Art erschaffe ich digitale Erlebnisse, die Menschen dabei helfen, ihre Ziele zu strukturieren und zu erreichen. Jedes Projekt ist ein neues Abenteuer! <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"></p>
                     <a href="https://www.linkedin.com/in/gwyneth-binz" target="_blank" class="btn btn-secondary" data-i18n="team.linkedin">
-                        💼 LinkedIn Profil
+                        <img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> LinkedIn Profil
                     </a>
                 </div>
             </div>
@@ -139,17 +144,14 @@
         <div class="container">
             <h2 data-i18n="sponsors.title">Gefördert durch</h2>
             <div class="sponsors-grid">
-                <div class="sponsor-placeholder">
-                    <div class="placeholder-image"></div>
-                    <p data-i18n="sponsor1">Förderpartner 1</p>
+                <div class="sponsor-logo">
+                    <img src="img/stipendium/existlogo.png" alt="EXIST Women – From Science to Business">
                 </div>
-                <div class="sponsor-placeholder">
-                    <div class="placeholder-image"></div>
-                    <p data-i18n="sponsor2">Förderpartner 2</p>
+                <div class="sponsor-logo">
+                    <img src="img/stipendium/exist-bmwe-logoleistezuschnitt-rgb-de.png" alt="Bundesministerium für Wirtschaft und Energie – Kofinanziert von der Europäischen Union">
                 </div>
-                <div class="sponsor-placeholder">
-                    <div class="placeholder-image"></div>
-                    <p data-i18n="sponsor3">Förderpartner 3</p>
+                <div class="sponsor-logo">
+                    <img src="img/stipendium/hdm logo.png" alt="Hochschule der Medien">
                 </div>
             </div>
         </div>
@@ -159,23 +161,23 @@
     <section id="cta" class="cta-section">
         <div class="container">
             <h2 data-i18n="cta.title">Bereit, deine Ziele zu wachsen?</h2>
-            <p data-i18n="cta.subtitle">Die App kommt bald! 🌱 Kontaktiere uns, um Updates zu erhalten!</p>
+            <p data-i18n="cta.subtitle">Die App kommt bald! <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"> Kontaktiere uns, um Updates zu erhalten!</p>
             <div class="cta-contact">
                 <a href="mailto:gwynethsamanthabinz@gmail.com" class="btn btn-primary" data-i18n="cta.email">
-                    📧 gwynethsamanthabinz@gmail.com
+                    <img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> gwynethsamanthabinz@gmail.com
                 </a>
                 <button class="btn btn-secondary" onclick="copyToClipboard('gwynethsamanthabinz@gmail.com')" data-i18n="cta.copy">
-                    📋 Email kopieren
+                    <img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> Email kopieren
                 </button>
             </div>
-            <p class="cta-note" data-i18n="cta.note">Hast du Fragen, Feedback oder möchtest Testperson sein? Kontaktiere uns gerne! 🌱</p>
+            <p class="cta-note" data-i18n="cta.note">Hast du Fragen, Feedback oder möchtest Testperson sein? Kontaktiere uns gerne! <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"></p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p data-i18n="footer.copy">© 2026 PixelSprout. Wachse deine Ziele. 🌱</p>
+            <p data-i18n="footer.copy">© 2026 PixelSprout. Wachse deine Ziele. <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"></p>
             <div class="footer-links">
                 <a href="#privacy" data-i18n="footer.privacy">Datenschutz</a> |
                 <a href="#terms" data-i18n="footer.terms">Nutzungsbedingungen</a> |
