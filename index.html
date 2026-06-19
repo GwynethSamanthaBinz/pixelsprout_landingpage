@@ -13,10 +13,13 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand"><img src="img/logo.png" alt="" class="logo-icon logo-icon--nav"> PixelSprout</div>
+            <div class="nav-brand"><img src="img/Logomitsparkle.png" alt="" class="logo-icon logo-icon--nav"> PixelSprout</div>
             <ul class="nav-links">
                 <li><a href="#features" data-i18n="nav.features">Features</a></li>
-                <li><a href="#cta" data-i18n="nav.download">Download</a></li>
+                <li><a href="#how-it-works" data-i18n="nav.howitworks">So funktioniert's</a></li>
+                <li><a href="#draw" data-i18n="nav.draw">Zeichnen</a></li>
+                <li><a href="#team" data-i18n="nav.team">Über uns</a></li>
+                <li><a href="#cta" data-i18n="nav.contact">Kontakt</a></li>
             </ul>
             <div class="lang-switcher">
                 <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
@@ -28,27 +31,32 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <video class="hero-bg-video" autoplay loop muted playsinline>
+            <source src="img/videos/headerv2besserquali.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-tagline" data-i18n="hero.tagline"><img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> Ein Zuhause für deine Ziele</div>
-                <h1>PixelSprout</h1>
-                <p class="hero-subtitle" data-i18n="hero.subtitle">Ziele sind oft überwältigend. PixelSprout verwandelt sie in einen interaktiven Garten: Jedes Ziel wird zu einer Pflanze, die mit deinen Meilensteinen wächst. Strukturiere, verfolge und erlebe deine Erfolge in einer wunderschönen Pixel-Art-Welt.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
-                        <span data-i18n="hero.cta">Kontaktiere uns • Testperson werden</span>
-                    </button>
-                    <div class="draw-group">
-                        <p class="hero-handmade" data-i18n="hero.handmade">Jeder Pixel von Hand. Keine KI.</p>
-                        <a href="#draw" class="btn cta-draw-btn" data-i18n="cta.draw"><b>→</b> Sieh mir beim Zeichnen zu</a>
+                <div class="hero-header">
+                    <img src="img/Logomitsparkle.png" alt="PixelSprout Logo" class="logo-icon logo-icon--hero">
+                    <div class="hero-header-text">
+                        <div class="hero-tagline" data-i18n="hero.tagline">EIN ZUHAUSE FÜR DEINE ZIELE</div>
+                        <h1>PixelSprout</h1>
                     </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <div class="phone-wrapper">
-                    <video autoplay loop muted playsinline>
-                        <source src="img/Mockupvidhomescreen.mp4" type="video/mp4">
-                        <img src="img/image.png" alt="PixelSprout App Screenshot" loading="lazy">
-                    </video>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">PixelSprout repräsentiert deine Ziele in einem interaktiven Pixel-Art-Garten: Jedes Ziel wird zu einem Bereich, der mit deinen selbstdefinierten Meilensteinen wächst. Strukturiere, verfolge und erlebe deine Erfolge in einer wunderschönen Pixel-Art-Welt.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
+                        <span data-i18n="hero.cta.contact">Kontaktiere uns</span>
+                    </button>
+                    <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
+                        <span data-i18n="hero.cta.tester">Testperson werden</span>
+                    </button>
+                    <a href="#features" class="btn btn-secondary btn-how" data-i18n="hero.cta.how">Wie es funktioniert</a>
+                </div>
+                <div class="draw-group">
+                    <p class="hero-handmade" data-i18n="hero.handmade">Jeder Pixel von Hand. Keine KI-Kunst.</p>
+                    <a href="#draw" class="hero-draw-link" data-i18n="cta.draw">↓ Sieh mir beim Zeichnen zu</a>
                 </div>
             </div>
         </div>
@@ -56,6 +64,18 @@
 
     <!-- Features Section -->
     <section id="features" class="features">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-tl" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-tr" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-ml" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-mr" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-bl" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-br" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-a" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-b" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-c" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-d" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-e" aria-hidden="true">
+        <img src="img/deko/Sonneblume.png" alt="" class="deko deko--sf-f" aria-hidden="true">
         <div class="container">
             <!-- Problem Section -->
             <div class="problem-section">
@@ -70,32 +90,11 @@
                 </div>
             </div>
 
-            <!-- Feature Highlights -->
-            <div class="feature-highlights">
-                <h3 data-i18n="highlights.title">So funktioniert's</h3>
-                <div class="highlights-grid">
-                    <div class="highlight-card">
-                        <div class="highlight-icon"><img src="img/logo.png" alt="" class="logo-icon logo-icon--lg"></div>
-                        <h4 data-i18n="h1.title">Garten wächst mit deinen Zielen</h4>
-                        <p data-i18n="h1.desc">Jedes erreichte Ziel lässt deine Pflanze wachsen. Visueller Fortschritt, den du sehen kannst.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-icon"><img src="img/logo.png" alt="" class="logo-icon logo-icon--lg"></div>
-                        <h4 data-i18n="h2.title">Fortschritt wird sichtbar</h4>
-                        <p data-i18n="h2.desc">Keine versteckten Statistiken. Dein Garten ist dein Spiegel. Jeder Meilenstein zählt.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-icon"><img src="img/logo.png" alt="" class="logo-icon logo-icon--lg"></div>
-                        <h4 data-i18n="h3.title">Keine Überforderung, nur Struktur</h4>
-                        <p data-i18n="h3.desc">Zerlege Ziele in kleinere, erreichbare Meilensteine. Spielerisch, nicht stressig.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="how-it-works">
+    <section id="how-it-works" class="how-it-works">
         <div class="container">
             <h2 data-i18n="howitworks.title">So funktioniert's</h2>
             <div class="steps">
@@ -103,55 +102,117 @@
                     <div class="step-number">1</div>
                     <h3 data-i18n="step1.title">Ziel Setzen</h3>
                     <p data-i18n="step1.desc">Definiere dein großes Ziel</p>
+                    <div class="screenshot-placeholder">
+                        <img src="img/userflowscreens/UF1.png" alt="Start Screen">
+                        <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
+                    </div>
                 </div>
                 <div class="arrow">→</div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3 data-i18n="step2.title">Strukturieren</h3>
                     <p data-i18n="step2.desc">Teile es in Meilensteine auf</p>
+                    <div class="screenshot-placeholder">
+                        <img src="img/userflowscreens/UF2.png" alt="Ziel-Übersicht">
+                        <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
+                    </div>
                 </div>
                 <div class="arrow">→</div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3 data-i18n="step3.title">Umsetzen</h3>
                     <p data-i18n="step3.desc">Arbeite an deinen Tasks</p>
+                    <div class="screenshot-placeholder">
+                        <img src="img/userflowscreens/UF3.png" alt="Meilensteine">
+                        <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
+                    </div>
                 </div>
                 <div class="arrow">→</div>
                 <div class="step">
                     <div class="step-number">4</div>
                     <h3 data-i18n="step4.title">Wachsen</h3>
                     <p data-i18n="step4.desc">Sehe deine Fortschritte!</p>
+                    <div class="screenshot-placeholder">
+                        <img src="img/userflowscreens/UF4.png" alt="Aufgaben-Übersicht">
+                        <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
+                    </div>
                 </div>
             </div>
+            <p class="concept-disclaimer" data-i18n="screenshots.disclaimer">Diese Screens sind frühe Konzeptentwürfe zur Veranschaulichung der Bedienung und Funktionalitäten und werden kontinuierlich weiterentwickelt.</p>
         </div>
     </section>
 
-    <!-- Draw / Process Section -->
+    <!-- Draw / Pixel Art Section -->
     <section id="draw" class="draw-section">
         <div class="container">
-            <h2 data-i18n="draw.title">Sieh mir beim Zeichnen zu</h2>
-            <p class="draw-subtitle" data-i18n="draw.subtitle">Jeder Pixel ist von Hand gezeichnet — keine KI, echte Handarbeit. Hier bekommst du bald einen Blick hinter die Kulissen.</p>
-            <div class="video-placeholder">
-                <div class="video-play-icon">&#9654;</div>
-                <p class="video-coming-soon" data-i18n="draw.coming">Timelapse kommt bald</p>
+            <div class="draw-inner">
+
+                <!-- Warum Pixel Art? -->
+                <div class="pixelart-why">
+                    <h2 data-i18n="pixelart.title">Warum Pixel Art?</h2>
+                    <p class="pixelart-intro" data-i18n="pixelart.intro">Pixel Art ist mehr als ein Look — der Stil hat eine echte Wirkung auf Motivation und Wohlbefinden.</p>
+                    <ul class="pixelart-points">
+                        <li data-i18n="pixelart.point1">Entspannend & vertraut — Pixel Art erinnert an Kindheit und Spiele. Diese nostalgische Ästhetik senkt die Hemmschwelle und macht es leichter, sich mit seinen Zielen auseinanderzusetzen.</li>
+                        <li data-i18n="pixelart.point2">Motivierend durch Farbe & Klarheit — Klare Pixel, lebendige Farben und einfache Formen sprechen das Belohnungssystem direkt an. Wenn Fortschritt bunt und greifbar aussieht, bleibt man dran.</li>
+                        <li data-i18n="pixelart.point3">Kreativ & persönlich — Kein Hochglanz, kein Corporate-Look. Pixel Art strahlt Wärme und Kreativität aus — und macht aus dem Alltag etwas, das sich wie ein kleines Abenteuer anfühlt.</li>
+                        <li data-i18n="pixelart.point4">Nostalgie hebt nachweislich die Stimmung, reduziert Einsamkeit und stärkt das Zugehörigkeitsgefühl — und Pixel Art löst bei vielen genau diese Gefühle aus. <em class="pixelart-citation">(Sedikides et al., Journal of Personality and Social Psychology, 2008)</em></li>
+                    </ul>
+                </div>
+
+                <!-- Timelapse Video -->
+                <div class="draw-video-area">
+                    <h2 data-i18n="draw.title">Sieh mir beim Zeichnen zu</h2>
+                    <p class="draw-subtitle" data-i18n="draw.subtitle">Jeder Pixel ist von Hand gezeichnet — keine KI-Kunst, echte Handarbeit. Das Design befindet sich noch in der Entwicklung: Was du hier siehst, ist ein erstes Konzept. Ich arbeite kontinuierlich daran, meine Fähigkeiten zu erweitern und PixelSprout Pixel für Pixel zum Leben zu erwecken.</p>
+                    <div class="timelapse-wrapper">
+                        <video class="timelapse-video" id="timelapse-vid" preload="metadata">
+                            <source src="img/videos/timelapskompri.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <button class="timelapse-play-btn" onclick="toggleTimelapse(this)">&#9654; Play</button>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Das Team Section -->
-    <section class="team-section">
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
         <div class="container">
-            <h2 data-i18n="team.title">Das Team</h2>
-            <div class="team-card">
-                <div class="team-image">
-                    <img src="img/PortraimitLaptop.jpeg" alt="Gwyneth Binz" loading="lazy">
+            <h2 data-i18n="cta.title">Die App kommt bald!</h2>
+            <p class="cta-note" data-i18n="cta.note">Hast du Fragen, Feedback oder möchtest Testperson sein? Kontaktiere uns gerne!</p>
+            <div class="cta-contact">
+                <a href="mailto:gwynethsamanthabinz@gmail.com" class="btn btn-primary" data-i18n="cta.email">gwynethsamanthabinz@gmail.com</a>
+                <button class="btn btn-secondary" onclick="copyToClipboard('gwynethsamanthabinz@gmail.com')" data-i18n="cta.copy">Email kopieren</button>
+            </div>
+            <p class="cta-handmade" data-i18n="cta.handmade">Jeder Pixel von Hand. Keine KI-Kunst.</p>
+            <img src="img/deko/UntitledArtwork7 (1) 2.png" alt="" class="deko deko--wheelbarrow" aria-hidden="true">
+        </div>
+    </section>
+
+    <!-- Über uns Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 data-i18n="team.title">Über uns</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="img/PortraimitLaptop.jpeg" alt="Gwyneth Binz" loading="lazy">
+                    </div>
+                    <div class="team-content">
+                        <h3>Gwyneth Binz</h3>
+                        <p class="team-role" data-i18n="team.role.gwyneth">Founder</p>
+                        <a href="https://www.linkedin.com/in/gwyneth-binz" target="_blank" class="btn btn-secondary" data-i18n="team.linkedin">LinkedIn Profil</a>
+                    </div>
                 </div>
-                <div class="team-content">
-                    <h3>Gwyneth Binz</h3>
-                    <p data-i18n="team.desc">Leidenschaftliche Kreative und Gründerin von PixelSprout. Mit einer Vorliebe für intuitive Design und Pixel-Art erschaffe ich digitale Erlebnisse, die Menschen dabei helfen, ihre Ziele zu strukturieren und zu erreichen. Jedes Projekt ist ein neues Abenteuer! <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"></p>
-                    <a href="https://www.linkedin.com/in/gwyneth-binz" target="_blank" class="btn btn-secondary" data-i18n="team.linkedin">
-                        <img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> LinkedIn Profil
-                    </a>
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="img/porträithelmut.jpg" alt="Helmut Wacker" loading="lazy">
+                    </div>
+                    <div class="team-content">
+                        <h3>Helmut Wacker</h3>
+                        <p class="team-role" data-i18n="team.role.helmut">Co-Founder</p>
+                        <a href="#" target="_blank" class="btn btn-secondary" data-i18n="team.helmut.linkedin">LinkedIn Profil</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -175,32 +236,14 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="cta" class="cta-section">
-        <div class="container">
-            <h2 data-i18n="cta.title">Bereit, deine Ziele zu wachsen?</h2>
-            <p data-i18n="cta.subtitle">Die App kommt bald! <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"> Kontaktiere uns, um Updates zu erhalten!</p>
-            <div class="cta-contact">
-                <a href="mailto:gwynethsamanthabinz@gmail.com" class="btn btn-primary" data-i18n="cta.email">
-                    <img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> gwynethsamanthabinz@gmail.com
-                </a>
-                <button class="btn btn-secondary" onclick="copyToClipboard('gwynethsamanthabinz@gmail.com')" data-i18n="cta.copy">
-                    <img src="img/logo.png" alt="" class="logo-icon logo-icon--inline"> Email kopieren
-                </button>
-            </div>
-            <p class="cta-note" data-i18n="cta.note">Hast du Fragen, Feedback oder möchtest Testperson sein? Kontaktiere uns gerne! <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"></p>
-            <p class="cta-handmade" data-i18n="cta.handmade">Jeder Pixel von Hand. Keine KI.</p>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p data-i18n="footer.copy">© 2026 PixelSprout. Wachse deine Ziele. <img src="img/logo.png" alt="🌱" class="logo-icon logo-icon--inline"></p>
+            <p data-i18n="footer.copy">© 2026 PixelSprout. Wachse deine Ziele. <img src="img/Logomitsparkle.png" alt="🌱" class="logo-icon logo-icon--inline"></p>
             <div class="footer-links">
-                <a href="#privacy" data-i18n="footer.privacy">Datenschutz</a> |
-                <a href="#terms" data-i18n="footer.terms">Nutzungsbedingungen</a> |
-                <a href="#contact" data-i18n="footer.contact">Kontakt</a>
+                <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutz</a> |
+                <a href="impressum.html" data-i18n="footer.terms">Impressum</a> |
+                <a href="#cta" data-i18n="footer.contact">Kontakt</a>
             </div>
         </div>
     </footer>

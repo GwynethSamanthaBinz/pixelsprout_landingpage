@@ -35,6 +35,19 @@ document.querySelectorAll('.feature-card, .step').forEach(el => {
     observer.observe(el);
 });
 
+// Timelapse Play/Pause
+function toggleTimelapse(btn) {
+    const video = document.getElementById('timelapse-vid');
+    if (video.paused) {
+        video.play();
+        btn.innerHTML = '&#9646;&#9646; Pause';
+    } else {
+        video.pause();
+        btn.innerHTML = '&#9654; Play';
+    }
+    video.onended = () => { btn.innerHTML = '&#9654; Play'; };
+}
+
 // Copy to Clipboard Funktion
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
