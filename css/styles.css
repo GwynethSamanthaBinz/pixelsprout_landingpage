@@ -1016,6 +1016,7 @@ body {
 
     .draw-group {
         align-items: center;
+        margin-top: 1.5rem;
     }
 
     /* Sponsors */
@@ -1093,7 +1094,7 @@ body {
         height: 100%;
         object-fit: cover;
         object-position: center;
-        opacity: 0.6;
+        opacity: 1;
         z-index: 0;
     }
 
@@ -1104,7 +1105,7 @@ body {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(245, 240, 255, 0.45);
+        background: rgba(245, 240, 255, 0.15);
         z-index: 1;
     }
 
