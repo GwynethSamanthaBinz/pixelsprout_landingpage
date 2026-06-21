@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelSprout - Strukturiere Deine Ziele im Pixel-Art-Stil</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logoblauhintergrund.png">
+    <link rel="apple-touch-icon" href="img/logoblauhintergrund.png">
+
+    <!-- SEO -->
+    <meta name="description" content="PixelSprout verwandelt deine Ziele in einen interaktiven Pixel-Art-Garten. Strukturiere, verfolge und erlebe deinen Fortschritt – Meilenstein für Meilenstein.">
+
+    <!-- Open Graph (WhatsApp, Discord, Facebook …) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pixelsprout.de">
+    <meta property="og:title" content="Pixel Sprout – A home for your goals.">
+    <meta property="og:description" content="Deine Ziele wachsen wie Pflanzen: PixelSprout verwandelt Meilensteine in einen lebendigen Pixel-Art-Garten. Strukturiere und erlebe deinen Fortschritt.">
+    <meta property="og:image" content="https://pixelsprout.de/img/titelbildnamelogo.png">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pixel Sprout – A home for your goals.">
+    <meta name="twitter:description" content="Deine Ziele wachsen wie Pflanzen: PixelSprout verwandelt Meilensteine in einen lebendigen Pixel-Art-Garten.">
+    <meta name="twitter:image" content="https://pixelsprout.de/img/titelbildnamelogo.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -14,7 +35,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand"><img src="img/Logomitsparkle.png" alt="" class="logo-icon logo-icon--nav"> PixelSprout</div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#features" data-i18n="nav.features">Für Ambitionierte</a></li>
                 <li><a href="#how-it-works" data-i18n="nav.howitworks">So funktioniert's</a></li>
                 <li><a href="#draw" data-i18n="nav.draw">Zeichnen</a></li>
@@ -27,6 +48,11 @@
                 <span class="lang-divider">|</span>
                 <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
             </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 

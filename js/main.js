@@ -66,12 +66,38 @@ function copyToClipboard(text) {
     });
 }
 
-// Mobile Navigation Toggle (optional für zukünftige Erweiterungen)
+// Mobile Navigation Toggle
 function initMobileNav() {
-    const navLinks = document.querySelector('.nav-links');
-    if (window.innerWidth <= 768) {
-        // Könnte hier ein Mobile Menu hinzugefügt werden
-    }
+    const toggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    if (!toggle || !navLinks) return;
+
+    // Button-Klick: Menü auf/zuklappen
+    toggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        toggle.classList.toggle('open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+    });
+
+    // Menü schließen wenn ein Link geklickt wird
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Menü öffnen');
+        });
+    });
+
+    // Menü schließen wenn außerhalb geklickt wird
+    document.addEventListener('click', (e) => {
+        if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
 }
 
 // Auf Seitenladeende aufrufen

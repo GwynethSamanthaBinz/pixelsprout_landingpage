@@ -171,6 +171,11 @@ body {
     display: none;
 }
 
+/* Hamburger button – hidden on desktop */
+.nav-toggle {
+    display: none;
+}
+
 /* Mobile-only video preview – hidden on desktop */
 .hero-video-preview {
     display: none;
@@ -799,31 +804,79 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    /* Navbar: Brand + Lang nebeneinander, Links darunter */
+    /* Navbar: Brand links, Lang + Hamburger rechts */
     .navbar .container {
         flex-wrap: wrap;
         gap: 0.5rem;
+        position: relative;
     }
 
-    .nav-links {
-        order: 3;
-        width: 100%;
+    /* Hamburger-Button */
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.5rem 0.5rem;
-        font-size: 0.75rem;
+        gap: 5px;
+        background: transparent;
+        border: 2px solid rgba(139, 123, 200, 0.55);
+        padding: 8px 9px;
+        cursor: pointer;
+        order: 3;
+        box-shadow: 2px 2px 0 rgba(139, 123, 200, 0.25);
+        flex-shrink: 0;
     }
 
+    .nav-toggle span {
+        display: block;
+        width: 22px;
+        height: 3px;
+        background: var(--primary-color);
+        transition: transform 0.15s, opacity 0.15s;
+    }
+
+    /* X-Animation wenn Menü offen */
+    .nav-toggle.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Nav-Links: standardmäßig versteckt */
+    .nav-links {
+        display: none;
+        order: 4;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.8rem;
+        padding: 1rem 0 0.5rem;
+        border-top: 2px solid rgba(139, 123, 200, 0.2);
+        margin-top: 0.25rem;
+    }
+
+    /* Nav-Links sichtbar wenn offen */
+    .nav-links.open {
+        display: flex;
+    }
+
+    /* Kein Trennstrich bei vertikaler Liste */
     .nav-links li {
-        padding-right: 0.5rem;
-    }
-
-    .navbar {
-        overflow: hidden;
+        border-right: none;
+        padding-right: 0;
     }
 
     .nav-brand {
         font-size: 1rem;
+        order: 1;
+    }
+
+    .lang-switcher {
+        order: 2;
     }
 
     /* Hero */
