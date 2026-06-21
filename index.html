@@ -35,6 +35,10 @@
         <video class="hero-bg-video" autoplay loop muted playsinline>
             <source src="img/videos/headerv2besserquali.mp4" type="video/mp4">
         </video>
+        <!-- Nur auf Handy: separater Hintergrund -->
+        <video class="hero-bg-mobile" autoplay loop muted playsinline aria-hidden="true">
+            <source src="img/videos/seperaterhintergrund.mp4" type="video/mp4">
+        </video>
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
@@ -60,10 +64,10 @@
                     <a href="#draw" class="hero-draw-link" data-i18n="cta.draw">↓ Sieh mir beim Zeichnen zu</a>
                 </div>
             </div>
-            <!-- Nur auf Handy sichtbar: Video als eigenes Element unter dem Text -->
+            <!-- Nur auf Handy: Homescreen-Video unter dem Text -->
             <div class="hero-video-preview" aria-hidden="true">
                 <video autoplay loop muted playsinline>
-                    <source src="img/videos/headerv2besserquali.mp4" type="video/mp4">
+                    <source src="img/videos/homescreenmittig.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
@@ -105,7 +109,7 @@
                     <h3 data-i18n="step1.title">Ziel Setzen</h3>
                     <p data-i18n="step1.desc">Definiere dein großes Ziel</p>
                     <div class="screenshot-placeholder">
-                        <img src="img/userflowscreens/UF1.png" alt="Start Screen">
+                        <img src="img/userflowscreens/UF2.png" alt="Start Screen">
                         <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
                     </div>
                 </div>
@@ -115,7 +119,7 @@
                     <h3 data-i18n="step2.title">Strukturieren</h3>
                     <p data-i18n="step2.desc">Teile es in Meilensteine auf</p>
                     <div class="screenshot-placeholder">
-                        <img src="img/userflowscreens/UF2.png" alt="Ziel-Übersicht">
+                        <img src="img/userflowscreens/UF3.png" alt="Ziel-Übersicht">
                         <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
                     </div>
                 </div>
@@ -125,7 +129,7 @@
                     <h3 data-i18n="step3.title">Umsetzen</h3>
                     <p data-i18n="step3.desc">Arbeite an deinen Tasks</p>
                     <div class="screenshot-placeholder">
-                        <img src="img/userflowscreens/UF3.png" alt="Meilensteine">
+                        <img src="img/userflowscreens/UF4.png" alt="Meilensteine">
                         <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
                     </div>
                 </div>
@@ -135,7 +139,7 @@
                     <h3 data-i18n="step4.title">Wachsen</h3>
                     <p data-i18n="step4.desc">Sehe deine Fortschritte!</p>
                     <div class="screenshot-placeholder">
-                        <img src="img/userflowscreens/UF4.png" alt="Aufgaben-Übersicht">
+                        <img src="img/userflowscreens/UF1.png" alt="Aufgaben-Übersicht">
                         <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
                     </div>
                 </div>
@@ -167,7 +171,7 @@
                     <p class="draw-subtitle" data-i18n="draw.subtitle">Jeder Pixel ist von Hand gezeichnet — keine KI-Kunst, echte Handarbeit. Das Design befindet sich noch in der Entwicklung: Was du hier siehst, ist ein erstes Konzept. Ich arbeite kontinuierlich daran, meine Fähigkeiten zu erweitern und PixelSprout Pixel für Pixel zum Leben zu erwecken.</p>
                     <div class="timelapse-outer">
                         <div class="timelapse-wrapper">
-                            <video class="timelapse-video" id="timelapse-vid" preload="metadata">
+                            <video class="timelapse-video" id="timelapse-vid" preload="auto">
                                 <source src="img/videos/timelapskompri.mp4" type="video/mp4">
                             </video>
                         </div>
