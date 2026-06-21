@@ -66,6 +66,93 @@ function copyToClipboard(text) {
     });
 }
 
+// Fallende Sonnenblumen – nur Handy, einmalig beim Einscollen
+function initFallingSunflowers() {
+    if (window.innerWidth > 768) return;
+
+    const section  = document.getElementById('features');
+    const container = document.getElementById('falling-sunflowers');
+    if (!section || !container) return;
+
+    let launched = false;
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !launched) {
+            launched = true;
+            observer.disconnect();
+            setTimeout(() => launchFlowers(container), 80);
+        }
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
+}
+
+function launchFlowers(container) {
+    const W     = container.offsetWidth;
+    const H     = container.offsetHeight;
+    const COUNT = 34;
+
+    for (let i = 0; i < COUNT; i++) {
+        const size = 36 + Math.random() * 88;          // 36–124 px
+
+        // Startposition: irgendwo oben, auch seitlich außerhalb
+        const startX = -size + Math.random() * (W + size);
+        const startY = -(size + Math.random() * 120);
+        const startAngle = (Math.random() - 0.5) * 80;
+
+        // Wurfrichtung: schräg nach unten, mit seitlichem Schwung
+        const throwDir  = Math.random() > 0.5 ? 1 : -1;
+        const horizDist = throwDir * (40 + Math.random() * 100);
+
+        // Parabolischer Scheitelpunkt (kurzer Aufwärtsbogen)
+        const peakOffsetX = horizDist * 0.35;
+        const peakOffsetY = -(20 + Math.random() * 70);
+
+        // Endposition: Haufen am unteren Rand
+        const endX = Math.max(4, Math.min(W - size - 4, startX + horizDist));
+        const endY = H - size - Math.random() * (size * 0.8);   // leicht versetzt → Haufen-Effekt
+        const endAngle = (Math.random() - 0.5) * 130;
+
+        const duration = 1300 + Math.random() * 1500;            // 1.3–2.8 s
+        const delay    = i * 65 + Math.random() * 50;            // staffeln
+
+        // Wrapper bewegt sich linear horizontal (Wurfgeschwindigkeit)
+        const wrap = document.createElement('div');
+        wrap.className = 'fall-sf-wrap';
+        const img = document.createElement('img');
+        img.src = 'img/deko/Sonneblume.png';
+        img.style.width = size + 'px';
+        wrap.appendChild(img);
+        container.appendChild(wrap);
+
+        // X: linearer Wurf
+        wrap.animate(
+            [{ transform: `translateX(${startX}px)` },
+             { transform: `translateX(${endX}px)` }],
+            { duration, delay, easing: 'linear', fill: 'both' }
+        );
+
+        // Y + Rotation: Parabel mit Schwerkraft
+        img.animate([
+            {
+                transform: `translateY(${startY}px) rotate(${startAngle}deg)`,
+                opacity: 0,
+                easing: 'ease-out'
+            },
+            {
+                transform: `translateY(${startY + peakOffsetY}px) rotate(${startAngle * 0.5}deg)`,
+                opacity: 0.9,
+                offset: 0.22,
+                easing: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)'
+            },
+            {
+                transform: `translateY(${endY}px) rotate(${endAngle}deg)`,
+                opacity: 0.88
+            }
+        ], { duration, delay, fill: 'both' });
+    }
+}
+
 // Mobile Navigation Toggle
 function initMobileNav() {
     const toggle = document.getElementById('nav-toggle');
@@ -103,6 +190,7 @@ function initMobileNav() {
 // Auf Seitenladeende aufrufen
 document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
+    initFallingSunflowers();
     
     // Easter Egg: Konami Code für Bonus-Nachricht
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];

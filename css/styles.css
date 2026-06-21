@@ -1619,3 +1619,36 @@ body {
     height: 2.2em;
     vertical-align: -0.5em;
 }
+
+/* ── Fallende Sonnenblumen (nur Handy) ── */
+.falling-sunflowers {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .features {
+        overflow: hidden;
+    }
+
+    .falling-sunflowers {
+        display: block;
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .fall-sf-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        will-change: transform;
+    }
+
+    .fall-sf-wrap img {
+        display: block;
+        image-rendering: pixelated;
+        will-change: transform, opacity;
+    }
+}
