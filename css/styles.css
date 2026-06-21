@@ -1009,8 +1009,9 @@ body {
         max-width: 100%;
     }
 
-    /* Hero draw link */
-    .hero-draw-link {
+    /* Hero draw link + handmade – gleiche Größe */
+    .hero-draw-link,
+    .hero-handmade {
         font-size: 0.9rem;
     }
 
