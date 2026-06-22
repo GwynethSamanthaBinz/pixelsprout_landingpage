@@ -148,7 +148,73 @@ function launchFlowers(container) {
                 opacity: 0.88
             }
         ], { duration, delay, fill: 'both' });
+
+        // Nach dem Landen: draggable machen
+        setTimeout(() => makeDraggable(wrap, img, endX, endY, endAngle), delay + duration + 50);
     }
+}
+
+function makeDraggable(wrap, img, endX, endY, endAngle) {
+    // Animation einfrieren: WAAPI abbrechen, Position als CSS left/top fixieren
+    img.style.transform = `rotate(${endAngle}deg)`;
+    img.getAnimations().forEach(a => a.cancel());
+
+    wrap.style.left = endX + 'px';
+    wrap.style.top  = endY + 'px';
+    wrap.getAnimations().forEach(a => a.cancel());
+    wrap.style.willChange = 'auto';
+
+    // Interaktion freischalten
+    wrap.style.pointerEvents = 'auto';
+    wrap.style.cursor = 'grab';
+    wrap.style.userSelect = 'none';
+    wrap.style.zIndex = '2';
+
+    let sX = 0, sY = 0, oL = 0, oT = 0, dragging = false;
+
+    function dragStart(clientX, clientY) {
+        dragging = true;
+        sX = clientX; sY = clientY;
+        oL = parseFloat(wrap.style.left) || 0;
+        oT = parseFloat(wrap.style.top)  || 0;
+        wrap.style.cursor = 'grabbing';
+        wrap.style.zIndex = '10';
+    }
+
+    function dragMove(clientX, clientY) {
+        if (!dragging) return;
+        wrap.style.left = (oL + clientX - sX) + 'px';
+        wrap.style.top  = (oT + clientY - sY) + 'px';
+    }
+
+    function dragEnd() {
+        dragging = false;
+        wrap.style.cursor = 'grab';
+        wrap.style.zIndex = '2';
+    }
+
+    // Touch (Handy)
+    wrap.addEventListener('touchstart', e => {
+        dragStart(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', e => {
+        if (dragging) {
+            e.preventDefault();
+            dragMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+    }, { passive: false });
+
+    wrap.addEventListener('touchend', dragEnd);
+
+    // Maus (Desktop)
+    wrap.addEventListener('mousedown', e => {
+        dragStart(e.clientX, e.clientY);
+        const move = e => dragMove(e.clientX, e.clientY);
+        const up   = () => { dragEnd(); document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); };
+        document.addEventListener('mousemove', move);
+        document.addEventListener('mouseup', up);
+    });
 }
 
 // Mobile Navigation Toggle

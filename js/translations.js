@@ -105,7 +105,7 @@ const translations = {
         'team.role.gwyneth':     'Founder',
         'team.role.helmut':      'Co-Founder',
         'team.bio.gwyneth.label': 'About me',
-        'team.bio.gwyneth':      'As a fan of cozy games, I wanted to use my knowledge from studying Media and Industrial Engineering with a focus on Digital Publishing Technologies to build an app I\'d actually love to use myself. PixelSprout is designed to help you organise goals, projects and hobbies in a motivating and clear way — and to keep track of them long-term through a gamified approach.',
+        'team.bio.gwyneth':      'As a fan of cozy games, I wanted to use my knowledge from studying Media Engineering with a focus on Digital Publishing Technologies to build an app I\'d actually love to use myself. PixelSprout is designed to help you organise goals, projects and hobbies in a motivating and clear way, to keep track of them long-term through a gamified approach.',
         'team.bio.helmut.label': 'About the Co-Founder',
         'team.bio.helmut':       'The idea behind PixelSprout excited me from the very beginning. As Co-Founder, I support the development of the app and share the vision of making personal growth more motivating and accessible.',
         'team.linkedin':         'LinkedIn Profile',
