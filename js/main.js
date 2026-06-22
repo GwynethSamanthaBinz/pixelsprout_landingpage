@@ -68,8 +68,6 @@ function copyToClipboard(text) {
 
 // Fallende Sonnenblumen – nur Handy, einmalig beim Einscollen
 function initFallingSunflowers() {
-    if (window.innerWidth > 768) return;
-
     const section  = document.getElementById('features');
     const container = document.getElementById('falling-sunflowers');
     if (!section || !container) return;
@@ -113,8 +111,8 @@ function launchFlowers(container) {
         const endY = H - size - Math.random() * (size * 0.8);   // leicht versetzt → Haufen-Effekt
         const endAngle = (Math.random() - 0.5) * 130;
 
-        const duration = 1300 + Math.random() * 1500;            // 1.3–2.8 s
-        const delay    = i * 65 + Math.random() * 50;            // staffeln
+        const duration = 2000 + Math.random() * 2000;            // 2–4 s
+        const delay    = i * 200 + Math.random() * 150;          // stärker staffeln
 
         // Wrapper bewegt sich linear horizontal (Wurfgeschwindigkeit)
         const wrap = document.createElement('div');
@@ -185,6 +183,25 @@ function initMobileNav() {
             toggle.setAttribute('aria-expanded', 'false');
         }
     });
+}
+
+// LinkedIn Coming Soon Popup
+function showLinkedinPopup() {
+    const popup = document.getElementById('linkedin-popup');
+    if (!popup) return;
+    popup.classList.add('visible');
+    document.addEventListener('keydown', closeOnEscape);
+}
+
+function hideLinkedinPopup() {
+    const popup = document.getElementById('linkedin-popup');
+    if (!popup) return;
+    popup.classList.remove('visible');
+    document.removeEventListener('keydown', closeOnEscape);
+}
+
+function closeOnEscape(e) {
+    if (e.key === 'Escape') hideLinkedinPopup();
 }
 
 // Auf Seitenladeende aufrufen

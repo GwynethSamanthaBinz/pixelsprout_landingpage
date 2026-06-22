@@ -231,11 +231,17 @@ body {
         0 0 50px rgba(100, 50, 180, 0.4);
 }
 
-.hero-content .hero-subtitle {
+.hero-content .hero-subtitle,
+.hero-content .hero-handmade {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.2rem;
+    font-weight: 400;
     color: #1a1a1a;
-    margin-bottom: 2rem;
     line-height: 1.8;
+}
+
+.hero-content .hero-subtitle {
+    margin-bottom: 2rem;
 }
 
 /* Buttons */
@@ -679,13 +685,97 @@ body {
 .team-role {
     font-family: 'Press Start 2P', monospace;
     font-size: 0.5rem;
-    color: var(--primary-color);
+    color: rgba(139, 123, 200, 0.45);
     letter-spacing: 2px;
     margin-bottom: 1.5rem !important;
 }
 
+.team-bio-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.45rem;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+    margin-top: 0;
+}
+
+.team-bio {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
 .team-content .btn {
     text-decoration: none;
+}
+
+/* LinkedIn Coming Soon Popup */
+.linkedin-popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(90, 45, 145, 0.35);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkedin-popup-overlay.visible {
+    display: flex;
+}
+
+.linkedin-popup-card {
+    background: #fff;
+    border: 3px solid var(--primary-color);
+    border-radius: 16px;
+    padding: 2.5rem 2rem 1.8rem;
+    text-align: center;
+    position: relative;
+    max-width: 280px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(90, 45, 145, 0.25);
+    animation: popup-bounce 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popup-bounce {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+}
+
+.linkedin-popup-smiley {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.linkedin-popup-text {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    color: var(--dark-color);
+    letter-spacing: 1px;
+    line-height: 2;
+    margin-bottom: 0;
+}
+
+.linkedin-popup-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 4px;
+}
+
+.linkedin-popup-close:hover {
+    color: var(--primary-color);
 }
 
 /* Sponsors Section */
@@ -853,7 +943,7 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
-        font-size: 0.8rem;
+        font-size: 0.88rem;
         padding: 1rem 0 0.5rem;
         border-top: 2px solid rgba(139, 123, 200, 0.2);
         margin-top: 0.25rem;
@@ -902,7 +992,8 @@ body {
         justify-content: center;
     }
 
-    .hero-content .hero-subtitle {
+    .hero-content .hero-subtitle,
+    .hero-content .hero-handmade {
         font-size: 1rem;
     }
 
@@ -933,12 +1024,19 @@ body {
     .features-single h2,
     .feature-highlights h3,
     .how-it-works h2,
+    .features-subtitle,
     .pixelart-why h2,
     .draw-video-area h2,
-    .team-section h2,
-    .sponsors-section h2,
-    .cta-section h2 {
+    .sponsors-section h2 {
         font-size: 1.1rem;
+    }
+
+    .team-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-section h2 {
+        font-size: 1.4rem;
     }
 
     .core-idea {
@@ -974,8 +1072,8 @@ body {
     .cta-contact .btn {
         width: 100%;
         word-break: break-all;
-        font-size: 0.75rem;
-        padding: 14px 16px;
+        font-size: 1rem;
+        padding: 16px 18px;
     }
 
     /* Team */
@@ -1009,10 +1107,8 @@ body {
         max-width: 100%;
     }
 
-    /* Hero draw link + handmade – gleiche Größe */
-    .hero-draw-link,
-    .hero-handmade {
-        font-size: 0.9rem;
+    .hero-draw-link {
+        font-size: 1rem;
     }
 
     .draw-group {
@@ -1020,14 +1116,18 @@ body {
         margin-top: 1.5rem;
     }
 
-    /* Sponsors */
+    /* Sponsors – alle drei in einer Zeile */
     .sponsors-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+    }
+
+    .sponsor-logo {
+        padding: 4px;
     }
 
     .sponsor-logo img {
-        max-width: 180px;
+        max-width: 110px;
     }
 
     /* Draw / Pixel Art section */
@@ -1036,7 +1136,7 @@ body {
     }
 
     .step .screenshot-placeholder {
-        height: 420px;
+        height: 528px;
     }
 
     .draw-inner {
@@ -1115,7 +1215,7 @@ body {
         display: block;
         position: relative;
         width: 100%;
-        height: 480px;
+        height: 528px;
         overflow: hidden;
         border-radius: 20px;
         box-shadow: 0 20px 60px rgba(139, 123, 200, 0.35);
@@ -1136,6 +1236,14 @@ body {
     }
 
     .hero-buttons {
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .hero-buttons .btn-primary {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
         justify-content: center;
     }
 
@@ -1173,7 +1281,8 @@ body {
         height: 55px;
     }
 
-    .hero-content .hero-subtitle {
+    .hero-content .hero-subtitle,
+    .hero-content .hero-handmade {
         font-size: 0.9rem;
     }
 
@@ -1193,12 +1302,19 @@ body {
     .features-single h2,
     .feature-highlights h3,
     .how-it-works h2,
+    .features-subtitle,
     .pixelart-why h2,
     .draw-video-area h2,
-    .team-section h2,
-    .sponsors-section h2,
-    .cta-section h2 {
+    .sponsors-section h2 {
         font-size: 1rem;
+    }
+
+    .team-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .cta-section h2 {
+        font-size: 1.3rem;
     }
 
     .core-idea {
@@ -1224,8 +1340,8 @@ body {
     }
 
     .cta-contact .btn {
-        font-size: 0.6rem;
-        padding: 12px 14px;
+        font-size: 0.9rem;
+        padding: 14px 16px;
     }
 
     .team-card {
@@ -1287,12 +1403,23 @@ body {
 }
 
 .hero-handmade {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #2a2a2a;
     margin-bottom: 1rem;
-    line-height: 1.6;
+    text-align: left;
+}
+
+.features-single h2 {
+    color: var(--primary-color);
+}
+
+.features-subtitle {
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 1px;
+    font-size: 1.4rem;
+    color: var(--dark-color);
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
 }
 
 .hero-header {
@@ -1594,6 +1721,19 @@ body {
         gap: 40px;
         width: 100%;
     }
+
+    /* features-subtitle base rule comes before this block in the cascade,
+       so override here to be slightly smaller than features-single h2 (1.1rem) */
+    .features-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* slightly smaller than features-single h2 (1rem) at this breakpoint */
+    .features-subtitle {
+        font-size: 0.85rem;
+    }
 }
 
 /* Logo Icon – ersetzt 🌱 Emoji überall */
@@ -1620,9 +1760,14 @@ body {
     vertical-align: -0.5em;
 }
 
-/* ── Fallende Sonnenblumen (nur Handy) ── */
+/* ── Fallende Sonnenblumen ── */
 .falling-sunflowers {
-    display: none;
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {

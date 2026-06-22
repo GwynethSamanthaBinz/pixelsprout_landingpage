@@ -121,7 +121,8 @@
         <div class="container">
             <!-- Core Idea -->
             <div class="features-single">
-                <h2 data-i18n="features.title">Du bist ambitioniert aber überwältigt? Warum PixelSprout dir helfen kann:</h2>
+                <h2 data-i18n="features.title">Ambitioniert, aber überwältigt?</h2>
+                <p class="features-subtitle" data-i18n="features.subtitle">Warum PixelSprout helfen kann</p>
                 <div class="core-idea">
                     <p data-i18n="features.core">Du hast große Ziele, aber irgendwie verliert sich alles im Alltag ?<br><br>PixelSprout verwandelt deine Ziele in einen interaktiven Pixel-Art-Garten. Jedes Ziel wird zu einem Bereich, der mit deinen Meilensteinen wächst. Mit visuellem Fortschritt strukturierst du komplexe Ziele spielerisch und siehst deinen Fortschritt greifbar vor dir. PixelSprout lädt dich ein, den Weg genauso zu genießen wie das Ziel → echtes Wachstum passiert im Prozess.<br><br><strong>Ein Zuhause für deine Ziele.</strong></p>
                 </div>
@@ -240,6 +241,7 @@
                     <div class="team-content">
                         <h3>Gwyneth Binz</h3>
                         <p class="team-role" data-i18n="team.role.gwyneth">Founder</p>
+                        <p class="team-bio" data-i18n="team.bio.gwyneth">Als Fan von Cozy Games wollte ich meine Kenntnisse aus meinem Studium des Wirtschaftsingenieurwesens Medien mit Schwerpunkt Digital Publishing Technologies nutzen, um eine App zu entwickeln, die ich mir selber wünschen würde. PixelSprout soll dabei helfen, Ziele, Projekte und Hobbys motivierend und übersichtlich zu organisieren und mithilfe eines gamifizierten Ansatzes langfristig zu verfolgen.</p>
                         <a href="https://www.linkedin.com/in/gwyneth-binz" target="_blank" class="btn btn-secondary" data-i18n="team.linkedin">LinkedIn Profil</a>
                     </div>
                 </div>
@@ -250,7 +252,8 @@
                     <div class="team-content">
                         <h3>Helmut Wacker</h3>
                         <p class="team-role" data-i18n="team.role.helmut">Co-Founder</p>
-                        <a href="#" target="_blank" class="btn btn-secondary" data-i18n="team.helmut.linkedin">LinkedIn Profil</a>
+                        <p class="team-bio" data-i18n="team.bio.helmut">Die Idee hinter PixelSprout hat mich von Anfang an begeistert. Als Co-Founder unterstütze ich die Weiterentwicklung der App und teile die Vision, persönliches Wachstum motivierender und zugänglicher zu gestalten.</p>
+                        <button class="btn btn-secondary" onclick="showLinkedinPopup()" data-i18n="team.helmut.linkedin">LinkedIn Profil</button>
                     </div>
                 </div>
             </div>
@@ -286,6 +289,15 @@
             </div>
         </div>
     </footer>
+
+    <!-- LinkedIn Coming Soon Popup -->
+    <div id="linkedin-popup" class="linkedin-popup-overlay" onclick="hideLinkedinPopup()" aria-hidden="true">
+        <div class="linkedin-popup-card" onclick="event.stopPropagation()">
+            <p class="linkedin-popup-smiley">^-^</p>
+            <p class="linkedin-popup-text" data-i18n="team.helmut.popup">Kommt noch!</p>
+            <button class="linkedin-popup-close" onclick="hideLinkedinPopup()" aria-label="Schließen">✕</button>
+        </div>
+    </div>
 
     <script src="js/translations.js"></script>
     <script src="js/main.js"></script>
