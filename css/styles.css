@@ -1749,6 +1749,12 @@ body {
     margin-right: 4px;
 }
 
+.logo-icon--nav-rounded {
+    border-radius: 22%;
+    width: auto;
+    height: 3.2rem;
+}
+
 .logo-icon--lg {
     width: 6rem;
     height: 6rem;
