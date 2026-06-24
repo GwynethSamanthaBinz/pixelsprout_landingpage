@@ -157,13 +157,13 @@ body {
 
 .hero-bg-video {
     position: absolute;
-    right: 0;
+    left: 50%;
     top: 0;
     height: 100%;
     width: auto;
     z-index: 0;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    transform: translateX(-50%) translateZ(0);
+    -webkit-transform: translateX(-50%) translateZ(0);
     filter: contrast(1.08) saturate(1.05);
 }
 
@@ -1660,21 +1660,19 @@ body {
     z-index: 10;
 }
 
-/* Sonnenblumen – Features Sektion */
-.deko--sf-tl { position: absolute; top: 25px;    left: 18px;  width: 120px; transform: rotate(-15deg); }
-.deko--sf-tr { position: absolute; top: 15px;    right: 22px; width: 75px;  transform: rotate(12deg);  }
-.deko--sf-ml { position: absolute; top: 44%;     left: 10px;  width: 65px;  transform: rotate(-8deg);  }
-.deko--sf-mr { position: absolute; top: 38%;     right: 14px; width: 98px;  transform: rotate(22deg);  }
-.deko--sf-bl { position: absolute; bottom: 20px; left: 35px;  width: 85px;  transform: rotate(-22deg); }
-.deko--sf-br { position: absolute; bottom: 15px; right: 28px; width: 108px; transform: rotate(16deg);  }
-
-/* Extra Sonnenblumen – unregelmäßig */
-.deko--sf-a  { position: absolute; top: 8%;      left: 6%;    width: 52px;  transform: rotate(30deg);  }
-.deko--sf-b  { position: absolute; top: 18%;     right: 8%;   width: 128px; transform: rotate(-6deg);  }
-.deko--sf-c  { position: absolute; top: 62%;     left: 4%;    width: 60px;  transform: rotate(10deg);  }
-.deko--sf-d  { position: absolute; top: 72%;     right: 5%;   width: 48px;  transform: rotate(-28deg); }
-.deko--sf-e  { position: absolute; bottom: 8%;   left: 12%;   width: 78px;  transform: rotate(5deg);   }
-.deko--sf-f  { position: absolute; top: 55%;     right: 10%;  width: 58px;  transform: rotate(-14deg); }
+/* Sonnenblumen – Features Sektion (nur Mobil, Desktop nutzt Fallanimation) */
+.deko--sf-tl,
+.deko--sf-tr,
+.deko--sf-ml,
+.deko--sf-mr,
+.deko--sf-bl,
+.deko--sf-br,
+.deko--sf-a,
+.deko--sf-b,
+.deko--sf-c,
+.deko--sf-d,
+.deko--sf-e,
+.deko--sf-f { display: none; }
 
 .deko--wheelbarrow {
     display: block;
@@ -1774,6 +1772,20 @@ body {
     pointer-events: none;
     z-index: 0;
     overflow: hidden;
+}
+
+.fall-sf-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.fall-sf-wrap img {
+    display: block;
+    image-rendering: pixelated;
+    will-change: transform, opacity;
 }
 
 @media (max-width: 768px) {

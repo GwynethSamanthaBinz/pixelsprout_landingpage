@@ -86,35 +86,76 @@ function initFallingSunflowers() {
 }
 
 function launchFlowers(container) {
-    const W     = container.offsetWidth;
-    const H     = container.offsetHeight;
-    const COUNT = 34;
+    const W         = container.offsetWidth;
+    const H         = container.offsetHeight;
+    const isDesktop = W > 768;
+    const COUNT     = isDesktop ? 56 : 34;
+    const cardW     = Math.min(900, W);
+    const margin    = Math.max(0, (W - cardW) / 2);
+
+    // Stack-Tracking: Spalten à 40px, prüft alle vom Blumen-Rechteck belegten Spalten
+    const slotW = 40;
+    const leftSlots   = {};
+    const rightSlots  = {};
+    const mobileSlots = {};
+
+    // ~8% Überlappung, Stapel max. 40% der Sektionshöhe
+    function stackedY(slots, x, size) {
+        const c0 = Math.floor(x / slotW);
+        const c1 = Math.floor((x + size) / slotW);
+
+        let minFloor = H;
+        for (let c = c0; c <= c1; c++) {
+            const f = slots[c] !== undefined ? slots[c] : H;
+            if (f < minFloor) minFloor = f;
+        }
+
+        const y = minFloor - size;
+
+        // Stapel auf unterste 40% der Sektion begrenzen → darüber: einfach unten ablegen (Überlappung ok)
+        if (y < H * 0.6) {
+            return H - size - Math.random() * size * 0.4;
+        }
+
+        // 8% Überlappung: Boden steigt um 92% der Blumengröße
+        const newFloor = minFloor - size * 0.92;
+        for (let c = c0; c <= c1; c++) {
+            const cur = slots[c] !== undefined ? slots[c] : H;
+            if (newFloor < cur) slots[c] = newFloor;
+        }
+
+        return y;
+    }
 
     for (let i = 0; i < COUNT; i++) {
-        const size = 36 + Math.random() * 88;          // 36–124 px
+        const size     = 36 + Math.random() * 88;
+        const leftSide = isDesktop && margin > 40 && (i % 2 === 0);
+        const rightSide= isDesktop && margin > 40 && (i % 2 !== 0);
 
-        // Startposition: irgendwo oben, auch seitlich außerhalb
-        const startX = -size + Math.random() * (W + size);
-        const startY = -(size + Math.random() * 120);
+        let startX, endX;
+        if (leftSide) {
+            startX = Math.random() * margin;
+            endX   = Math.max(4, Math.min(margin - size * 0.2, startX + (Math.random() - 0.5) * 80));
+        } else if (rightSide) {
+            startX = W - margin + Math.random() * margin;
+            endX   = Math.max(W - margin, Math.min(W - size - 4, startX + (Math.random() - 0.5) * 80));
+        } else {
+            startX = -size + Math.random() * (W + size);
+            endX   = Math.max(4, Math.min(W - size - 4, startX + (Math.random() - 0.5) * 140));
+        }
+
+        const startY     = -(size + Math.random() * 120);
         const startAngle = (Math.random() - 0.5) * 80;
+        const horizDist  = endX - startX;
+        const peakOffsetY= -(20 + Math.random() * 70);
 
-        // Wurfrichtung: schräg nach unten, mit seitlichem Schwung
-        const throwDir  = Math.random() > 0.5 ? 1 : -1;
-        const horizDist = throwDir * (40 + Math.random() * 100);
+        const slots = leftSide ? leftSlots : rightSide ? rightSlots : mobileSlots;
+        const endY  = stackedY(slots, endX, size);
 
-        // Parabolischer Scheitelpunkt (kurzer Aufwärtsbogen)
-        const peakOffsetX = horizDist * 0.35;
-        const peakOffsetY = -(20 + Math.random() * 70);
-
-        // Endposition: Haufen am unteren Rand
-        const endX = Math.max(4, Math.min(W - size - 4, startX + horizDist));
-        const endY = H - size - Math.random() * (size * 0.8);   // leicht versetzt → Haufen-Effekt
         const endAngle = (Math.random() - 0.5) * 130;
+        const duration = 2000 + Math.random() * 2000;
+        const delay    = i * 200 + Math.random() * 150;
 
-        const duration = 2000 + Math.random() * 2000;            // 2–4 s
-        const delay    = i * 200 + Math.random() * 150;          // stärker staffeln
-
-        // Wrapper bewegt sich linear horizontal (Wurfgeschwindigkeit)
         const wrap = document.createElement('div');
         wrap.className = 'fall-sf-wrap';
         const img = document.createElement('img');
@@ -123,98 +164,74 @@ function launchFlowers(container) {
         wrap.appendChild(img);
         container.appendChild(wrap);
 
-        // X: linearer Wurf
         wrap.animate(
             [{ transform: `translateX(${startX}px)` },
              { transform: `translateX(${endX}px)` }],
             { duration, delay, easing: 'linear', fill: 'both' }
         );
 
-        // Y + Rotation: Parabel mit Schwerkraft
         img.animate([
-            {
-                transform: `translateY(${startY}px) rotate(${startAngle}deg)`,
-                opacity: 0,
-                easing: 'ease-out'
-            },
-            {
-                transform: `translateY(${startY + peakOffsetY}px) rotate(${startAngle * 0.5}deg)`,
-                opacity: 0.9,
-                offset: 0.22,
-                easing: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)'
-            },
-            {
-                transform: `translateY(${endY}px) rotate(${endAngle}deg)`,
-                opacity: 0.88
-            }
+            { transform: `translateY(${startY}px) rotate(${startAngle}deg)`,                        opacity: 0,    easing: 'ease-out' },
+            { transform: `translateY(${startY + peakOffsetY}px) rotate(${startAngle * 0.5}deg)`,    opacity: 0.9,  offset: 0.22, easing: 'cubic-bezier(0.55,0.055,0.675,0.19)' },
+            { transform: `translateY(${endY}px) rotate(${endAngle}deg)`,                             opacity: 0.88 }
         ], { duration, delay, fill: 'both' });
 
-        // Nach dem Landen: draggable machen
-        setTimeout(() => makeDraggable(wrap, img, endX, endY, endAngle), delay + duration + 50);
+        // Nach dem Landen: Drag freischalten – Animation bleibt bis zur ersten Interaktion
+        setTimeout(() => {
+            wrap.style.pointerEvents = 'auto';
+            wrap.style.cursor        = 'grab';
+            wrap.style.userSelect    = 'none';
+            wrap.style.zIndex        = '2';
+
+            let converted = false;
+            let sX = 0, sY = 0, oL = 0, oT = 0, dragging = false;
+
+            // Lazy: erst beim ersten Drag von WAAPI auf CSS-Position umstellen
+            function convertToStatic() {
+                if (converted) return;
+                converted = true;
+                img.style.transform = `rotate(${endAngle}deg)`;
+                img.style.opacity   = '0.88';
+                img.getAnimations().forEach(a => a.cancel());
+                wrap.style.position = 'absolute';
+                wrap.style.left     = endX + 'px';
+                wrap.style.top      = endY + 'px';
+                wrap.getAnimations().forEach(a => a.cancel());
+                wrap.style.willChange = 'auto';
+            }
+
+            function dragStart(clientX, clientY) {
+                convertToStatic();
+                dragging = true;
+                sX = clientX; sY = clientY;
+                oL = parseFloat(wrap.style.left) || endX;
+                oT = parseFloat(wrap.style.top)  || endY;
+                wrap.style.cursor = 'grabbing';
+                wrap.style.zIndex = '10';
+            }
+            function dragMove(clientX, clientY) {
+                if (!dragging) return;
+                wrap.style.left = (oL + clientX - sX) + 'px';
+                wrap.style.top  = (oT + clientY - sY) + 'px';
+            }
+            function dragEnd() {
+                dragging = false;
+                wrap.style.cursor = 'grab';
+                wrap.style.zIndex = '2';
+            }
+
+            wrap.addEventListener('touchstart', e => dragStart(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+            wrap.addEventListener('touchmove',  e => { if (dragging) { e.preventDefault(); dragMove(e.touches[0].clientX, e.touches[0].clientY); } }, { passive: false });
+            wrap.addEventListener('touchend',   dragEnd);
+            wrap.addEventListener('mousedown',  e => {
+                dragStart(e.clientX, e.clientY);
+                const move = e => dragMove(e.clientX, e.clientY);
+                const up   = () => { dragEnd(); document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); };
+                document.addEventListener('mousemove', move);
+                document.addEventListener('mouseup', up);
+            });
+        }, delay + duration + 50);
     }
-}
-
-function makeDraggable(wrap, img, endX, endY, endAngle) {
-    // Animation einfrieren: WAAPI abbrechen, Position als CSS left/top fixieren
-    img.style.transform = `rotate(${endAngle}deg)`;
-    img.getAnimations().forEach(a => a.cancel());
-
-    wrap.style.left = endX + 'px';
-    wrap.style.top  = endY + 'px';
-    wrap.getAnimations().forEach(a => a.cancel());
-    wrap.style.willChange = 'auto';
-
-    // Interaktion freischalten
-    wrap.style.pointerEvents = 'auto';
-    wrap.style.cursor = 'grab';
-    wrap.style.userSelect = 'none';
-    wrap.style.zIndex = '2';
-
-    let sX = 0, sY = 0, oL = 0, oT = 0, dragging = false;
-
-    function dragStart(clientX, clientY) {
-        dragging = true;
-        sX = clientX; sY = clientY;
-        oL = parseFloat(wrap.style.left) || 0;
-        oT = parseFloat(wrap.style.top)  || 0;
-        wrap.style.cursor = 'grabbing';
-        wrap.style.zIndex = '10';
-    }
-
-    function dragMove(clientX, clientY) {
-        if (!dragging) return;
-        wrap.style.left = (oL + clientX - sX) + 'px';
-        wrap.style.top  = (oT + clientY - sY) + 'px';
-    }
-
-    function dragEnd() {
-        dragging = false;
-        wrap.style.cursor = 'grab';
-        wrap.style.zIndex = '2';
-    }
-
-    // Touch (Handy)
-    wrap.addEventListener('touchstart', e => {
-        dragStart(e.touches[0].clientX, e.touches[0].clientY);
-    }, { passive: true });
-
-    wrap.addEventListener('touchmove', e => {
-        if (dragging) {
-            e.preventDefault();
-            dragMove(e.touches[0].clientX, e.touches[0].clientY);
-        }
-    }, { passive: false });
-
-    wrap.addEventListener('touchend', dragEnd);
-
-    // Maus (Desktop)
-    wrap.addEventListener('mousedown', e => {
-        dragStart(e.clientX, e.clientY);
-        const move = e => dragMove(e.clientX, e.clientY);
-        const up   = () => { dragEnd(); document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); };
-        document.addEventListener('mousemove', move);
-        document.addEventListener('mouseup', up);
-    });
 }
 
 // Mobile Navigation Toggle
