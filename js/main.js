@@ -268,25 +268,6 @@ function initMobileNav() {
     });
 }
 
-// LinkedIn Coming Soon Popup
-function showLinkedinPopup() {
-    const popup = document.getElementById('linkedin-popup');
-    if (!popup) return;
-    popup.classList.add('visible');
-    document.addEventListener('keydown', closeOnEscape);
-}
-
-function hideLinkedinPopup() {
-    const popup = document.getElementById('linkedin-popup');
-    if (!popup) return;
-    popup.classList.remove('visible');
-    document.removeEventListener('keydown', closeOnEscape);
-}
-
-function closeOnEscape(e) {
-    if (e.key === 'Escape') hideLinkedinPopup();
-}
-
 // Auf Seitenladeende aufrufen
 document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
