@@ -53,6 +53,9 @@ const translations = {
         'cta.email':             'pixelsprout.app@gmail.com',
         'cta.copy':              'Email kopieren',
         'cta.handmade':          'Jeder Pixel von Hand. Keine KI-Kunst.',
+        'survey.title':          'Bereit, PixelSprout durch dein Feedback mitzugestalten?',
+        'survey.subtitle':       'Nimm an unserer 5-minütigen anonymen Umfrage teil',
+        'survey.button':         'Zur Umfrage',
         'footer.copy':           '© 2026 PixelSprout. Ein Zuhause für deine Ziele. <img src="img/Logomitsparkle.png" alt="🌱" class="logo-icon logo-icon--inline">',
         'footer.privacy':        'Datenschutz',
         'footer.terms':          'Impressum',
@@ -113,6 +116,9 @@ const translations = {
         'cta.email':             'pixelsprout.app@gmail.com',
         'cta.copy':              'Copy email',
         'cta.handmade':          'Every pixel by hand. No AI art.',
+        'survey.title':          'Ready to help shape PixelSprout with your feedback?',
+        'survey.subtitle':       'Take our 5-minute anonymous survey',
+        'survey.button':         'Take the survey',
         'footer.copy':           '© 2026 PixelSprout. A home for your goals. <img src="img/Logomitsparkle.png" alt="🌱" class="logo-icon logo-icon--inline">',
         'footer.privacy':        'Privacy Policy',
         'footer.terms':          'Imprint',
@@ -130,6 +136,10 @@ function setLanguage(lang) {
         if (translations[lang][key] !== undefined) {
             el.innerHTML = translations[lang][key];
         }
+    });
+
+    document.querySelectorAll(`[data-href-${lang}]`).forEach(el => {
+        el.setAttribute('href', el.getAttribute(`data-href-${lang}`));
     });
 
     document.querySelectorAll('.lang-btn').forEach(btn => {

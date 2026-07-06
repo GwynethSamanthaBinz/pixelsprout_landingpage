@@ -80,12 +80,17 @@
                 </div>
                 <p class="hero-subtitle" data-i18n="hero.subtitle">Die App, die deine Ziele in einen interaktiven Pixel-Art-Garten verwandelt: Jedes Ziel wird zu einem Bereich, der mit deinen selbstdefinierten Meilensteinen wächst.<br><br>Strukturiere, verfolge und erlebe deine Erfolge in einer wunderschönen Pixel-Art-Welt.</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
-                        <span data-i18n="hero.cta.contact">Kontaktiere uns</span>
-                    </button>
-                    <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
-                        <span data-i18n="hero.cta.tester">Testperson werden</span>
-                    </button>
+                    <div class="hero-buttons-primary">
+                        <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
+                            <span data-i18n="hero.cta.contact">Kontaktiere uns</span>
+                        </button>
+                        <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">
+                            <span data-i18n="hero.cta.tester">Testperson werden</span>
+                        </button>
+                        <button class="btn btn-primary" onclick="document.getElementById('survey').scrollIntoView({behavior: 'smooth'})">
+                            <span data-i18n="survey.button">Zur Umfrage</span>
+                        </button>
+                    </div>
                     <a href="#features" class="btn btn-secondary btn-how" data-i18n="hero.cta.how">Wie es funktioniert</a>
                 </div>
                 <div class="draw-group">
@@ -226,6 +231,17 @@
             </div>
             <p class="cta-handmade" data-i18n="cta.handmade">Jeder Pixel von Hand. Keine KI-Kunst.</p>
             <img src="img/deko/UntitledArtwork7 (1) 2.png" alt="" class="deko deko--wheelbarrow" aria-hidden="true">
+        </div>
+    </section>
+
+    <!-- Survey Section -->
+    <section id="survey" class="cta-section">
+        <div class="container">
+            <h2 data-i18n="survey.title">Bereit, PixelSprout durch dein Feedback mitzugestalten?</h2>
+            <p class="cta-note" data-i18n="survey.subtitle">Nimm an unserer 5-minütigen anonymen Umfrage teil</p>
+            <div class="cta-contact">
+                <a href="https://survey.hdm-stuttgart.de/712244?lang=de-informal" data-href-de="https://survey.hdm-stuttgart.de/712244?lang=de-informal" data-href-en="https://survey.hdm-stuttgart.de/712244?lang=en" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="survey.button">Zur Umfrage</a>
+            </div>
         </div>
     </section>
 
