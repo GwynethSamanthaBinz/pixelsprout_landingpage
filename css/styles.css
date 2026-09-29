@@ -307,6 +307,24 @@ body {
     animation: slideInRight 0.8s ease-out;
 }
 
+/* Desktop: Handy genau so hoch wie die Text-Karte daneben.
+   contain: size → das Handy bestimmt die Zeilenhöhe nicht mit, sondern übernimmt sie */
+@media (min-width: 769px) {
+    .hero-image {
+        align-self: stretch;
+        contain: size;
+    }
+
+    /* Bei schmalen Fenstern nicht breiter als die Spalte – dann proportional kleiner */
+    .hero-image video,
+    .hero-image img {
+        height: 100%;
+        max-height: none;
+        max-width: 100%;
+        object-fit: contain;
+    }
+}
+
 @keyframes slideInRight {
     from {
         opacity: 0;
@@ -2073,6 +2091,49 @@ body {
 .timelapse-play-btn:hover {
     background: rgba(107, 90, 176, 0.7);
     transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* Galerie: großes Timelapse links, zwei kleinere rechts daneben */
+.timelapse-gallery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.timelapse-gallery .timelapse-outer--main {
+    flex: 1.15 1 0;
+    max-width: 300px;
+    margin: 0;
+}
+
+.timelapse-side {
+    flex: 1 1 0;
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.timelapse-side .timelapse-outer {
+    max-width: none;
+    margin: 0;
+}
+
+/* Die neuen Videos haben keinen Rand unten, der abgeschnitten werden muss */
+.timelapse-wrapper--full {
+    max-width: none;
+    min-height: 0;
+    clip-path: none;
+}
+
+.timelapse-side .timelapse-play-btn {
+    top: 50%;
+}
+
+/* Niedrig aufgelöste Timelapses: Pixel scharf vergrößern statt weichzeichnen */
+.timelapse-video--pixel {
+    image-rendering: pixelated;
 }
 
 /* Dekorative Pixel-Art Bilder */

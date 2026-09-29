@@ -188,8 +188,15 @@ function initStickers() {
 
 // Timelapse Play/Pause
 function toggleTimelapse(btn) {
-    const video = document.getElementById('timelapse-vid');
+    const video = btn.closest('.timelapse-outer').querySelector('video');
     if (video.paused) {
+        // Immer nur ein Timelapse gleichzeitig abspielen
+        document.querySelectorAll('.timelapse-outer video').forEach(other => {
+            if (other !== video && !other.paused) {
+                other.pause();
+                other.closest('.timelapse-outer').querySelector('.timelapse-play-btn').innerHTML = '&#9654; Play';
+            }
+        });
         video.play();
         btn.innerHTML = '&#9646;&#9646; Pause';
     } else {
