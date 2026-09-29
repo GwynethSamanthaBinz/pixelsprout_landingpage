@@ -28,3 +28,6 @@ build/
 # Cache
 .cache/
 *.tmp
+
+# Upload-Ordner mit Originaldateien/Briefing (Assets liegen in img/landingpage/)
+/landingpage/
