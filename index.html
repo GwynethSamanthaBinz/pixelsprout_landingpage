@@ -281,32 +281,50 @@
                     <h2 data-i18n="draw.title">Sieh mir beim Zeichnen zu</h2>
                     <p class="draw-subtitle" data-i18n="draw.subtitle">Jeder Pixel ist von Hand gezeichnet: keine KI-Kunst, echte Handarbeit. Das Design befindet sich noch in der Entwicklung: Was du hier siehst, ist ein erstes Konzept. Ich arbeite kontinuierlich daran, meine Fähigkeiten zu erweitern und PixelSprout Pixel für Pixel zum Leben zu erwecken.</p>
                     <div class="timelapse-gallery">
-                        <div class="timelapse-outer timelapse-outer--main">
-                            <div class="timelapse-wrapper">
-                                <video class="timelapse-video" id="timelapse-vid" preload="auto">
-                                    <source src="img/timelapses/timelapskompri.mp4" type="video/mp4">
-                                </video>
+                        <figure class="timelapse-item timelapse-item--main">
+                            <div class="timelapse-outer timelapse-outer--main">
+                                <div class="timelapse-wrapper">
+                                    <video class="timelapse-video" id="timelapse-vid" preload="auto">
+                                        <source src="img/timelapses/timelapskompri.mp4" type="video/mp4">
+                                    </video>
+                                </div>
                             </div>
-                            <button class="timelapse-play-btn" onclick="toggleTimelapse(this)">&#9654;</button>
-                        </div>
+                            <div class="timelapse-controls">
+                                <button type="button" class="timelapse-btn" data-action="toggle" aria-label="Abspielen" title="Abspielen"></button>
+                                <button type="button" class="timelapse-btn" data-action="restart" aria-label="Von vorne" title="Von vorne" data-i18n-title="timelapse.restart" data-i18n-aria="timelapse.restart"></button>
+                            </div>
+                            <figcaption data-i18n="draw.caption.garden">Allererster Entwurf vom Garten</figcaption>
+                        </figure>
                         <!-- Weitere Zeichen-Timelapses daneben -->
                         <div class="timelapse-side">
-                            <div class="timelapse-outer">
-                                <div class="timelapse-wrapper timelapse-wrapper--full">
-                                    <video class="timelapse-video timelapse-video--pixel" preload="metadata" playsinline poster="img/timelapses/UntitledArtwork1_poster.png">
-                                        <source src="img/timelapses/UntitledArtwork1.mp4" type="video/mp4">
-                                    </video>
+                            <figure class="timelapse-item">
+                                <div class="timelapse-outer">
+                                    <div class="timelapse-wrapper timelapse-wrapper--full">
+                                        <video class="timelapse-video timelapse-video--pixel" preload="metadata" playsinline poster="img/timelapses/UntitledArtwork1_poster.png">
+                                            <source src="img/timelapses/UntitledArtwork1.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
                                 </div>
-                                <button class="timelapse-play-btn" onclick="toggleTimelapse(this)">&#9654;</button>
-                            </div>
-                            <div class="timelapse-outer">
-                                <div class="timelapse-wrapper timelapse-wrapper--full">
-                                    <video class="timelapse-video timelapse-video--pixel" preload="metadata" playsinline poster="img/timelapses/UntitledArtwork2_poster.png">
-                                        <source src="img/timelapses/UntitledArtwork2.mp4" type="video/mp4">
-                                    </video>
+                                <div class="timelapse-controls">
+                                    <button type="button" class="timelapse-btn" data-action="toggle" aria-label="Abspielen" title="Abspielen"></button>
+                                    <button type="button" class="timelapse-btn" data-action="restart" aria-label="Von vorne" title="Von vorne" data-i18n-title="timelapse.restart" data-i18n-aria="timelapse.restart"></button>
                                 </div>
-                                <button class="timelapse-play-btn" onclick="toggleTimelapse(this)">&#9654;</button>
-                            </div>
+                                <figcaption data-i18n="draw.caption.lucky">Katze Lucky</figcaption>
+                            </figure>
+                            <figure class="timelapse-item">
+                                <div class="timelapse-outer">
+                                    <div class="timelapse-wrapper timelapse-wrapper--full">
+                                        <video class="timelapse-video timelapse-video--pixel" preload="metadata" playsinline poster="img/timelapses/UntitledArtwork2_poster.png">
+                                            <source src="img/timelapses/UntitledArtwork2.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="timelapse-controls">
+                                    <button type="button" class="timelapse-btn" data-action="toggle" aria-label="Abspielen" title="Abspielen"></button>
+                                    <button type="button" class="timelapse-btn" data-action="restart" aria-label="Von vorne" title="Von vorne" data-i18n-title="timelapse.restart" data-i18n-aria="timelapse.restart"></button>
+                                </div>
+                                <figcaption data-i18n="draw.caption.icons">Icons</figcaption>
+                            </figure>
                         </div>
                     </div>
                 </div>

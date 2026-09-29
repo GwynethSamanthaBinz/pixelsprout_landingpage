@@ -187,23 +187,51 @@ function initStickers() {
 }
 
 // Timelapse Play/Pause
-function toggleTimelapse(btn) {
-    const video = btn.closest('.timelapse-outer').querySelector('video');
-    if (video.paused) {
-        // Immer nur ein Timelapse gleichzeitig abspielen
-        document.querySelectorAll('.timelapse-outer video').forEach(other => {
-            if (other !== video && !other.paused) {
-                other.pause();
-                other.closest('.timelapse-outer').querySelector('.timelapse-play-btn').innerHTML = '&#9654; Play';
-            }
-        });
+// Steuerleiste unter jedem Timelapse (Abspielen/Pause, Von vorne) – nichts liegt über dem Bild
+const TIMELAPSE_ICONS = {
+    play: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>',
+    pause: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg>',
+    restart: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5a5.5 5.5 0 1 1-5.2 3.7l1.9.6A3.5 3.5 0 1 0 8 4.5v2L4.5 3.5 8 .5z"/></svg>'
+};
+
+function initTimelapses() {
+    const items = document.querySelectorAll('.timelapse-item');
+    const videos = [...items].map(item => item.querySelector('video'));
+
+    // Immer nur ein Timelapse gleichzeitig abspielen
+    const playOnly = video => {
+        videos.forEach(other => { if (other !== video) other.pause(); });
         video.play();
-        btn.innerHTML = '&#9646;&#9646; Pause';
-    } else {
-        video.pause();
-        btn.innerHTML = '&#9654; Play';
-    }
-    video.onended = () => { btn.innerHTML = '&#9654; Play'; };
+    };
+
+    items.forEach(item => {
+        const video = item.querySelector('video');
+        const toggle = item.querySelector('[data-action="toggle"]');
+        const restart = item.querySelector('[data-action="restart"]');
+        if (!video || !toggle || !restart) return;
+
+        restart.innerHTML = TIMELAPSE_ICONS.restart;
+
+        const update = () => {
+            const lang = localStorage.getItem('language') || 'de';
+            const label = translations[lang][video.paused ? 'timelapse.play' : 'timelapse.pause'];
+            toggle.innerHTML = video.paused ? TIMELAPSE_ICONS.play : TIMELAPSE_ICONS.pause;
+            toggle.setAttribute('aria-label', label);
+            toggle.title = label;
+        };
+
+        const togglePlay = () => (video.paused ? playOnly(video) : video.pause());
+        toggle.addEventListener('click', togglePlay);
+        video.addEventListener('click', togglePlay);
+        restart.addEventListener('click', () => {
+            video.currentTime = 0;
+            playOnly(video);
+        });
+
+        ['play', 'pause', 'ended'].forEach(type => video.addEventListener(type, update));
+        document.addEventListener('languagechange', update);
+        update();
+    });
 }
 
 // Copy to Clipboard Funktion
@@ -432,6 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFallingSunflowers();
     initStepsCarousel();
     initStickers();
+    initTimelapses();
 
     // Easter Egg: Konami Code für Bonus-Nachricht
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];

@@ -2066,33 +2066,6 @@ body {
     margin: 0 auto;
 }
 
-.timelapse-play-btn {
-    position: absolute;
-    top: 46%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: rgba(107, 90, 176, 0.3);
-    backdrop-filter: blur(6px);
-    color: white;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 4px;
-    transition: background 0.2s ease, transform 0.15s ease;
-    box-shadow: 0 4px 20px rgba(107, 90, 176, 0.4);
-}
-
-.timelapse-play-btn:hover {
-    background: rgba(107, 90, 176, 0.7);
-    transform: translate(-50%, -50%) scale(1.08);
-}
-
 /* Galerie: großes Timelapse links, zwei kleinere rechts daneben */
 .timelapse-gallery {
     display: flex;
@@ -2101,10 +2074,72 @@ body {
     gap: 16px;
 }
 
-.timelapse-gallery .timelapse-outer--main {
+.timelapse-item {
+    margin: 0;
+}
+
+.timelapse-item--main {
     flex: 1.15 1 0;
     max-width: 300px;
+}
+
+.timelapse-gallery .timelapse-outer--main {
+    max-width: none;
     margin: 0;
+}
+
+.timelapse-item figcaption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Steuerleiste unter jedem Video: Abspielen/Pause und Von vorne */
+.timelapse-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Beim großen Video sind unten 8 % der Höhe weggeschnitten (clip-path), belegen aber
+   noch Platz: 8 % der Höhe ≈ 15,2 % der Breite (Video 1440 × 2732) → Leiste hochziehen */
+.timelapse-item--main .timelapse-controls {
+    margin-top: calc(10px - 15.2%);
+}
+
+.timelapse-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    background: white;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(139, 123, 200, 0.25);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.timelapse-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.timelapse-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.timelapse-video {
+    cursor: pointer;
 }
 
 .timelapse-side {
@@ -2125,10 +2160,6 @@ body {
     max-width: none;
     min-height: 0;
     clip-path: none;
-}
-
-.timelapse-side .timelapse-play-btn {
-    top: 50%;
 }
 
 /* Niedrig aufgelöste Timelapses: Pixel scharf vergrößern statt weichzeichnen */

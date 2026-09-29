@@ -49,6 +49,12 @@ const translations = {
         'draw.title':            'Sieh mir beim Zeichnen zu',
         'draw.subtitle':         'Jeder Pixel ist von Hand gezeichnet: keine KI-Kunst, echte Handarbeit. Das Design befindet sich noch in der Entwicklung: Was du hier siehst, ist ein erstes Konzept. Ich arbeite kontinuierlich daran, meine Fähigkeiten zu erweitern und PixelSprout Pixel für Pixel zum Leben zu erwecken.',
         'cta.draw':              '↓ Sieh mir beim Zeichnen zu',
+        'draw.caption.garden':   'Allererster Entwurf vom Garten',
+        'draw.caption.lucky':    'Katze Lucky',
+        'draw.caption.icons':    'Icons',
+        'timelapse.play':        'Abspielen',
+        'timelapse.pause':       'Pausieren',
+        'timelapse.restart':     'Von vorne',
         'team.title':            'Über uns',
         'team.role.gwyneth':     'Founder',
         'team.role.helmut':      'Co-Founder',
@@ -122,6 +128,12 @@ const translations = {
         'draw.title':            'Watch me draw',
         'draw.subtitle':         'Every pixel is drawn by hand: no AI art, real craftsmanship. The design is still evolving: what you see here is an early concept. I\'m continuously working on improving my skills and bringing PixelSprout to life, pixel by pixel.',
         'cta.draw':              '↓ Watch me draw',
+        'draw.caption.garden':   'The very first garden draft',
+        'draw.caption.lucky':    'Lucky the cat',
+        'draw.caption.icons':    'Icons',
+        'timelapse.play':        'Play',
+        'timelapse.pause':       'Pause',
+        'timelapse.restart':     'Restart',
         'team.title':            'About us',
         'team.role.gwyneth':     'Founder',
         'team.role.helmut':      'Co-Founder',
@@ -176,6 +188,13 @@ function setLanguage(lang) {
         }
     });
 
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria');
+        if (translations[lang][key] !== undefined) {
+            el.setAttribute('aria-label', translations[lang][key]);
+        }
+    });
+
     document.querySelectorAll(`[data-poster-${lang}]`).forEach(el => {
         el.setAttribute('poster', el.getAttribute(`data-poster-${lang}`));
     });
@@ -193,6 +212,9 @@ function setLanguage(lang) {
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
+
+    // Für Elemente, deren Text vom Zustand abhängt (z. B. Abspielen/Pause)
+    document.dispatchEvent(new CustomEvent('languagechange'));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
