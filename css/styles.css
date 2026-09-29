@@ -1062,7 +1062,7 @@ body {
     }
 
     .extra-card--notes .sticker-shot {
-        max-width: 220px;
+        max-width: 300px;
     }
 }
 
@@ -1500,13 +1500,17 @@ body {
         text-align: center;
     }
 
+    /* so groß wie die Schritt-Screens bei "So funktioniert's" */
     .extra-card img {
         width: 100%;
+        max-width: 300px;
     }
 
-    /* 1,5 × die 220 px der anderen Bilder */
+    /* Lucky (mit Sprechblasen) darf bis in den Innenabstand der Karte reichen,
+       damit das Handy darin möglichst gleich groß wirkt */
     .extra-card--lucky img {
-        max-width: 330px;
+        width: calc(100% + 32px); /* Innenabstand auf dem Handy: 18 px je Seite */
+        max-width: none;
     }
 
     /* Steps: erst Video, darunter 1 Schritt zum Wischen */
