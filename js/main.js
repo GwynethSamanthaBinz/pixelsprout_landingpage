@@ -68,6 +68,124 @@ function initStepsCarousel() {
     updateButtons();
 }
 
+// Sticker ausprobieren (Karte "Notizen & Habits") – nichts wird gespeichert
+function initStickers() {
+    const card = document.getElementById('sticker-card');
+    const toggle = document.getElementById('sticker-toggle');
+    const tray = document.getElementById('sticker-tray');
+    const layer = document.getElementById('sticker-layer');
+    const shot = card && card.querySelector('.sticker-shot');
+    if (!card || !toggle || !tray || !layer || !shot) return;
+
+    const MAX_STICKERS = 8;
+    const DOUBLE_TAP_MS = 300;
+
+    // Handyhöhe für die Position von Button und Leiste
+    const updateSizes = () => card.style.setProperty('--shot-h', shot.offsetHeight + 'px');
+    new ResizeObserver(updateSizes).observe(shot);
+    updateSizes();
+
+    toggle.addEventListener('click', () => {
+        const open = card.classList.toggle('stickers-open');
+        toggle.setAttribute('aria-expanded', open);
+    });
+
+    const insideCard = (x, y) => {
+        const r = card.getBoundingClientRect();
+        return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    };
+
+    // Position in Prozent der Karte, damit Sticker beim Skalieren mitwandern
+    const placeAt = (el, x, y) => {
+        const r = card.getBoundingClientRect();
+        el.style.left = ((x - r.left) / r.width * 100) + '%';
+        el.style.top = ((y - r.top) / r.height * 100) + '%';
+    };
+
+    // Pointer verfolgen (Maus + Touch) bis zum Loslassen
+    const follow = (downEvent, onMove, onEnd) => {
+        const id = downEvent.pointerId;
+        const move = e => { if (e.pointerId === id) onMove(e.clientX, e.clientY); };
+        const up = e => {
+            if (e.pointerId !== id) return;
+            window.removeEventListener('pointermove', move);
+            window.removeEventListener('pointerup', up);
+            window.removeEventListener('pointercancel', up);
+            onEnd(e.clientX, e.clientY, e.type === 'pointercancel');
+        };
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+        window.addEventListener('pointercancel', up);
+    };
+
+    const addSticker = (src, x, y) => {
+        const sticker = document.createElement('div');
+        sticker.className = 'sticker-placed';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        img.draggable = false;
+        // Kleines rotes Kreuz zum Löschen
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'sticker-remove';
+        remove.textContent = '×';
+        remove.setAttribute('aria-label', translations[localStorage.getItem('language') || 'de']['stickers.remove']);
+        remove.addEventListener('pointerdown', e => e.stopPropagation());
+        remove.addEventListener('click', () => sticker.remove());
+        sticker.append(img, remove);
+        placeAt(sticker, x, y);
+        layer.appendChild(sticker);
+
+        let lastTap = 0;
+        sticker.addEventListener('pointerdown', e => {
+            e.preventDefault();
+            // Doppelklick / Doppeltipp entfernt den Sticker
+            if (Date.now() - lastTap < DOUBLE_TAP_MS) {
+                sticker.remove();
+                return;
+            }
+            const start = { left: sticker.style.left, top: sticker.style.top };
+            let moved = false;
+            sticker.classList.add('dragging');
+            follow(e, (mx, my) => { moved = true; placeAt(sticker, mx, my); }, (ux, uy, cancelled) => {
+                sticker.classList.remove('dragging');
+                if (cancelled || !insideCard(ux, uy)) {
+                    sticker.style.left = start.left;
+                    sticker.style.top = start.top;
+                }
+                lastTap = moved ? 0 : Date.now();
+            });
+        });
+    };
+
+    // Aus der Leiste ziehen: eine Kopie folgt dem Pointer
+    tray.addEventListener('pointerdown', e => {
+        const source = e.target.closest('img');
+        if (!source || !tray.contains(source)) return;
+        e.preventDefault();
+
+        const ghost = source.cloneNode();
+        ghost.className = 'sticker-ghost';
+        const moveGhost = (x, y) => { ghost.style.left = x + 'px'; ghost.style.top = y + 'px'; };
+        moveGhost(e.clientX, e.clientY);
+        document.body.appendChild(ghost);
+
+        follow(e, moveGhost, (x, y, cancelled) => {
+            if (!cancelled && insideCard(x, y) && layer.children.length < MAX_STICKERS) {
+                addSticker(source.src, x, y);
+                ghost.remove();
+                return;
+            }
+            // Zurück in die Leiste fahren
+            const r = source.getBoundingClientRect();
+            ghost.classList.add('returning');
+            requestAnimationFrame(() => moveGhost(r.left + r.width / 2, r.top + r.height / 2));
+            setTimeout(() => ghost.remove(), 250);
+        });
+    });
+}
+
 // Timelapse Play/Pause
 function toggleTimelapse(btn) {
     const video = document.getElementById('timelapse-vid');
@@ -306,6 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initFallingSunflowers();
     initStepsCarousel();
+    initStickers();
 
     // Easter Egg: Konami Code für Bonus-Nachricht
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];

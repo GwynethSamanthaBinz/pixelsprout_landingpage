@@ -35,6 +35,10 @@ const translations = {
         'extra1.desc':           'Konzentriert arbeiten – mit Stoppuhr oder Countdown, direkt an deiner Aufgabe.',
         'extra2.title':          'Notizen & Habits',
         'extra2.desc':           'Gedanken und Listen notieren und kleine Gewohnheiten jeden Tag abhaken.',
+        'stickers.try':          'Sticker ausprobieren',
+        'stickers.hint':         'Zieh Sticker auf deine Notiz',
+        'stickers.remove':       'Sticker entfernen',
+        'extra3.title':          'Lucky – dein Begleiter',
         'extra3.desc':           'Deine Begleiterin im Garten – mit Tipps, Sprüchen und einem Tutorial, wann immer du Hilfe brauchst.',
         'pixelart.title':        'Warum Pixel Art?',
         'pixelart.intro':        'Pixel Art ist mehr als ein Look — der Stil hat eine echte Wirkung auf Motivation und Wohlbefinden.',
@@ -104,6 +108,10 @@ const translations = {
         'extra1.desc':           'Stay focused – stopwatch or countdown, right on your task.',
         'extra2.title':          'Notes & habits',
         'extra2.desc':           'Jot down thoughts and lists, and tick off small daily habits.',
+        'stickers.try':          'Try stickers',
+        'stickers.hint':         'Drag stickers onto your note',
+        'stickers.remove':       'Remove sticker',
+        'extra3.title':          'Lucky – your companion',
         'extra3.desc':           'Your garden companion – with tips, sayings and a tutorial whenever you need help.',
         'pixelart.title':        'Why Pixel Art?',
         'pixelart.intro':        'Pixel Art is more than just a look — the style has a real effect on motivation and well-being.',
@@ -158,6 +166,13 @@ function setLanguage(lang) {
         const key = el.getAttribute('data-i18n-alt');
         if (translations[lang][key] !== undefined) {
             el.setAttribute('alt', translations[lang][key]);
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+        const key = el.getAttribute('data-i18n-title');
+        if (translations[lang][key] !== undefined) {
+            el.setAttribute('title', translations[lang][key]);
         }
     });
 

@@ -192,7 +192,7 @@
                             <h3 data-i18n="step5.title">Wachsen</h3>
                             <p data-i18n="step5.desc">Mit jedem Meilenstein wächst dein Gartenbereich.</p>
                             <div class="screenshot-placeholder">
-                                <img src="img/landingpage/step_08_wachstum_de.webp" data-src-de="img/landingpage/step_08_wachstum_de.webp" data-src-en="img/landingpage/step_08_wachstum_en.webp" alt="Mit jedem Meilenstein wächst dein Gartenbereich." data-i18n-alt="step5.desc" loading="lazy" width="1080" height="1834">
+                                <img src="img/landingpage/step_08_wachstum_de.gif" data-src-de="img/landingpage/step_08_wachstum_de.gif" data-src-en="img/landingpage/step_08_wachstum_en.gif" alt="Mit jedem Meilenstein wächst dein Gartenbereich." data-i18n-alt="step5.desc" loading="lazy" width="1080" height="1834">
                             </div>
                         </div>
                     </div>
@@ -219,8 +219,28 @@
                         <p data-i18n="extra1.desc">Konzentriert arbeiten – mit Stoppuhr oder Countdown, direkt an deiner Aufgabe.</p>
                     </div>
                 </div>
-                <div class="highlight-card extra-card">
-                    <img src="img/landingpage/feature_13_notizblock_de.webp" data-src-de="img/landingpage/feature_13_notizblock_de.webp" data-src-en="img/landingpage/feature_13_notizblock_en.webp" alt="Gedanken und Listen notieren und kleine Gewohnheiten jeden Tag abhaken." data-i18n-alt="extra2.desc" loading="lazy" width="1080" height="1834">
+                <div class="highlight-card extra-card extra-card--notes" id="sticker-card">
+                    <!-- Sticker ausprobieren: Leiste aufklappen, Sticker irgendwo auf die Karte ziehen -->
+                    <div class="sticker-stage">
+                        <button type="button" class="sticker-toggle" id="sticker-toggle" aria-expanded="false" aria-controls="sticker-tray" title="Sticker ausprobieren" data-i18n-title="stickers.try">
+                            <img src="img/landingpage/sticker/sticker_3.png" alt="Sticker ausprobieren" data-i18n-alt="stickers.try" width="75" height="60">
+                        </button>
+                        <img class="sticker-shot" src="img/landingpage/feature_13_notizblock_de.webp" data-src-de="img/landingpage/feature_13_notizblock_de.webp" data-src-en="img/landingpage/feature_13_notizblock_en.webp" alt="Gedanken und Listen notieren und kleine Gewohnheiten jeden Tag abhaken." data-i18n-alt="extra2.desc" loading="lazy" width="1080" height="1834">
+                        <div class="sticker-tray" id="sticker-tray">
+                            <img src="img/landingpage/sticker/sticker_1.png" alt="" width="135" height="100" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_2.png" alt="" width="75" height="60" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_3.png" alt="" width="75" height="60" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_5.png" alt="" width="70" height="65" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_7.png" alt="" width="60" height="75" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_9.png" alt="" width="75" height="65" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_12.png" alt="" width="80" height="80" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_14.png" alt="" width="80" height="80" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_17.png" alt="" width="80" height="80" draggable="false">
+                            <img src="img/landingpage/sticker/sticker_20.png" alt="" width="80" height="80" draggable="false">
+                        </div>
+                        <p class="sticker-hint" data-i18n="stickers.hint">Zieh Sticker auf deine Notiz</p>
+                    </div>
+                    <div class="sticker-layer" id="sticker-layer"></div>
                     <div class="extra-text">
                         <h4 data-i18n="extra2.title">Notizen &amp; Habits</h4>
                         <p data-i18n="extra2.desc">Gedanken und Listen notieren und kleine Gewohnheiten jeden Tag abhaken.</p>
@@ -229,6 +249,7 @@
                 <div class="highlight-card extra-card extra-card--lucky">
                     <img src="img/landingpage/feature_14_lucky_sprueche_de.webp" data-src-de="img/landingpage/feature_14_lucky_sprueche_de.webp" data-src-en="img/landingpage/feature_14_lucky_sprueche_en.webp" alt="Deine Begleiterin im Garten – mit Tipps, Sprüchen und einem Tutorial, wann immer du Hilfe brauchst." data-i18n-alt="extra3.desc" loading="lazy" width="1600" height="1900">
                     <div class="extra-text">
+                        <h4 data-i18n="extra3.title">Lucky – dein Begleiter</h4>
                         <p data-i18n="extra3.desc">Deine Begleiterin im Garten – mit Tipps, Sprüchen und einem Tutorial, wann immer du Hilfe brauchst.</p>
                     </div>
                 </div>
