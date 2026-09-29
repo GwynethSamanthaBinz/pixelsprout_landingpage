@@ -1703,7 +1703,7 @@ body {
     }
 
     .hero-image {
-        max-width: 260px;
+        max-width: 300px; /* so groß wie die Schritt-Screens */
     }
 
     .problem-text {
