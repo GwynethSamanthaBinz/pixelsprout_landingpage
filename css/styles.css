@@ -447,6 +447,20 @@ body {
     background: #CFE2FC;
 }
 
+/* Breiter als die übrigen Abschnitte, damit Video + 3 Screens groß nebeneinander passen */
+.how-it-works .container,
+.extras-section .container {
+    max-width: 1440px;
+    padding: 0 40px; /* Platz für den nach außen ragenden Video-Rahmen */
+}
+
+@media (max-width: 768px) {
+    .how-it-works .container,
+    .extras-section .container {
+        padding: 0 20px;
+    }
+}
+
 .how-it-works h2 {
     font-size: 1.4rem;
     text-align: center;
@@ -465,12 +479,12 @@ body {
 }
 
 /* Links User-Journey-Video, rechts Schritte-Karussell */
-/* Video-Spalte = 1,2 Karten-Breiten: Video etwas größer als die Screens,
+/* Video-Spalte = 1,1 Karten-Breiten: Video etwa so groß wie die Screens,
    Rahmen so hoch wie die Schritte (Zeile 1: Video | Karten, Zeile 2: – | Pfeile) */
 .how-layout {
     --how-gap: 60px;
     display: grid;
-    grid-template-columns: calc((100% - 40px - var(--how-gap)) * 1.2 / 4.2) 1fr;
+    grid-template-columns: calc((100% - 40px - var(--how-gap)) * 1.1 / 4.1) 1fr;
     column-gap: var(--how-gap);
     row-gap: 0.8rem;
     align-items: end;
@@ -501,7 +515,9 @@ body {
     box-shadow: 0 8px 20px rgba(139, 123, 200, 0.3);
 }
 
+/* Freien Platz im Rahmen gleichmäßig über und unter Titel/Unterschrift verteilen */
 .userflow h3 {
+    margin-top: auto;
     font-size: 0.9rem;
     color: var(--primary-color);
     line-height: 2;
@@ -645,7 +661,7 @@ body {
 /* Handyrahmen ist schon im Bild */
 .step .screenshot-placeholder img {
     width: 100%;
-    max-width: 300px; /* so groß wie das User-Journey-Video */
+    max-width: 340px; /* so groß wie das User-Journey-Video */
     margin: 0 auto;
     height: auto;
     aspect-ratio: 1080 / 1834;
@@ -728,7 +744,7 @@ body {
 /* Handyrahmen ist schon im Bild */
 .extra-card img {
     display: block;
-    width: 250px;
+    width: 310px; /* so groß wie die Screens bei "So funktioniert's" */
     max-width: 100%;
     height: auto;
     aspect-ratio: 1080 / 1834;
@@ -746,8 +762,8 @@ body {
 }
 
 .extra-card--lucky img {
-    width: 375px;
-    max-width: calc(100% + 40px);
+    width: 455px; /* Handy darin ≈ so groß wie in den 310-px-Bildern */
+    max-width: calc(100% + 70px); /* Blasen ragen max. ~9 px über den Kartenrand */
     aspect-ratio: 1600 / 1900;
 }
 
