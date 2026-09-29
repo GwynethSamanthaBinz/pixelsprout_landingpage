@@ -32,6 +32,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Safari/iOS kann kein transparentes WebM → dort Standbild bzw. MP4 statt WebM -->
+    <script>
+        (function () {
+            var ua = navigator.userAgent;
+            if (/AppleWebKit/.test(ua) && !/Chrome|Chromium|Edg|OPR|Android/.test(ua)) {
+                document.documentElement.classList.add('no-alpha-video');
+            }
+        })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -61,13 +71,6 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <video class="hero-bg-video" autoplay loop muted playsinline>
-            <source src="img/videos/headerv2besserquali.mp4" type="video/mp4">
-        </video>
-        <!-- Nur auf Handy: separater Hintergrund -->
-        <video class="hero-bg-mobile" autoplay loop muted playsinline aria-hidden="true">
-            <source src="img/videos/seperaterhintergrund.mp4" type="video/mp4">
-        </video>
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
@@ -98,11 +101,12 @@
                     <a href="#draw" class="hero-draw-link" data-i18n="cta.draw">↓ Sieh mir beim Zeichnen zu</a>
                 </div>
             </div>
-            <!-- Nur auf Handy: Homescreen-Video unter dem Text -->
-            <div class="hero-video-preview" aria-hidden="true">
-                <video autoplay loop muted playsinline>
-                    <source src="img/videos/homescreenmittig.mp4" type="video/mp4">
+            <!-- Handy-Mockup mit Garten (rechts, auf Handy unter dem Text) -->
+            <div class="hero-image" aria-hidden="true">
+                <video class="hero-phone-video" autoplay loop muted playsinline poster="img/landingpage/hero_garden_poster.webp">
+                    <source src="img/landingpage/hero_garden_loop.webm" type="video/webm">
                 </video>
+                <img class="hero-phone-fallback" src="img/landingpage/hero_garden_poster.webp" alt="">
             </div>
         </div>
     </section>
@@ -140,48 +144,95 @@
     <section id="how-it-works" class="how-it-works">
         <div class="container">
             <h2 data-i18n="howitworks.title">So funktioniert's</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 data-i18n="step1.title">Ziel Setzen</h3>
-                    <p data-i18n="step1.desc">Definiere dein großes Ziel</p>
-                    <div class="screenshot-placeholder">
-                        <img src="img/userflowscreens/UF2.png" alt="Start Screen">
-                        <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
-                    </div>
+            <div class="how-layout">
+                <div class="userflow">
+                    <h3 data-i18n="userflow.title">Vorschau</h3>
+                    <p class="userflow-caption" data-i18n="userflow.caption">Die App in 60 Sekunden</p>
+                    <video class="userflow-video" controls playsinline preload="metadata" poster="img/landingpage/userflow_poster_de.webp" data-poster-de="img/landingpage/userflow_poster_de.webp" data-poster-en="img/landingpage/userflow_poster_en.webp">
+                        <source src="img/landingpage/userflow_video_de.webm" data-src-de="img/landingpage/userflow_video_de.webm" data-src-en="img/landingpage/userflow_video_en.webm" type="video/webm">
+                        <source src="img/landingpage/userflow_video_de.mp4" data-src-de="img/landingpage/userflow_video_de.mp4" data-src-en="img/landingpage/userflow_video_en.mp4" type="video/mp4">
+                    </video>
                 </div>
-                <div class="arrow">→</div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3 data-i18n="step2.title">Strukturieren</h3>
-                    <p data-i18n="step2.desc">Teile es in Meilensteine auf</p>
-                    <div class="screenshot-placeholder">
-                        <img src="img/userflowscreens/UF3.png" alt="Ziel-Übersicht">
-                        <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
+                <div class="steps-carousel">
+                    <div class="steps" id="steps-track">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h3 data-i18n="step1.title">Ziel setzen</h3>
+                            <p data-i18n="step1.desc">Definiere dein großes Ziel – in Sekunden angelegt.</p>
+                            <div class="screenshot-placeholder">
+                                <img src="img/landingpage/step_05_ziel_anlegen_de.webp" data-src-de="img/landingpage/step_05_ziel_anlegen_de.webp" data-src-en="img/landingpage/step_05_ziel_anlegen_en.webp" alt="Definiere dein großes Ziel – in Sekunden angelegt." data-i18n-alt="step1.desc" loading="lazy" width="1080" height="1834">
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h3 data-i18n="step2.title">Strukturieren</h3>
+                            <p data-i18n="step2.desc">Teile es in Meilensteine auf.</p>
+                            <div class="screenshot-placeholder">
+                                <img src="img/landingpage/step_06_unterziele_de.webp" data-src-de="img/landingpage/step_06_unterziele_de.webp" data-src-en="img/landingpage/step_06_unterziele_en.webp" alt="Teile es in Meilensteine auf." data-i18n-alt="step2.desc" loading="lazy" width="1080" height="1834">
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h3 data-i18n="step3.title">Umsetzen</h3>
+                            <p data-i18n="step3.desc">Erledige tägliche Aufgaben – ein Tipp genügt.</p>
+                            <div class="screenshot-placeholder">
+                                <img src="img/landingpage/step_10_aufgabe_abhaken_de.webp" data-src-de="img/landingpage/step_10_aufgabe_abhaken_de.webp" data-src-en="img/landingpage/step_10_aufgabe_abhaken_en.webp" alt="Erledige tägliche Aufgaben – ein Tipp genügt." data-i18n-alt="step3.desc" loading="lazy" width="1080" height="1834">
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h3 data-i18n="step4.title">Gießen</h3>
+                            <p data-i18n="step4.desc">Jede erledigte Aufgabe gießt deinen Garten und hält ihn frisch.</p>
+                            <div class="screenshot-placeholder">
+                                <img src="img/landingpage/step_11_giessen_de.webp" data-src-de="img/landingpage/step_11_giessen_de.webp" data-src-en="img/landingpage/step_11_giessen_en.webp" alt="Jede erledigte Aufgabe gießt deinen Garten und hält ihn frisch." data-i18n-alt="step4.desc" loading="lazy" width="1080" height="1834">
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <h3 data-i18n="step5.title">Wachsen</h3>
+                            <p data-i18n="step5.desc">Mit jedem Meilenstein wächst dein Gartenbereich.</p>
+                            <div class="screenshot-placeholder">
+                                <img src="img/landingpage/step_08_wachstum_de.webp" data-src-de="img/landingpage/step_08_wachstum_de.webp" data-src-en="img/landingpage/step_08_wachstum_en.webp" alt="Mit jedem Meilenstein wächst dein Gartenbereich." data-i18n-alt="step5.desc" loading="lazy" width="1080" height="1834">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="arrow">→</div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 data-i18n="step3.title">Umsetzen</h3>
-                    <p data-i18n="step3.desc">Arbeite an deinen Tasks</p>
-                    <div class="screenshot-placeholder">
-                        <img src="img/userflowscreens/UF4.png" alt="Meilensteine">
-                        <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
-                    </div>
-                </div>
-                <div class="arrow">→</div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3 data-i18n="step4.title">Wachsen</h3>
-                    <p data-i18n="step4.desc">Sehe deine Fortschritte!</p>
-                    <div class="screenshot-placeholder">
-                        <img src="img/userflowscreens/UF1.png" alt="Aufgaben-Übersicht">
-                        <span class="concept-badge" data-i18n="concept.badge">Konzept</span>
+                    <div class="carousel-nav">
+                        <button class="btn btn-secondary carousel-btn" id="steps-prev" aria-label="Zurück">&larr;</button>
+                        <button class="btn btn-secondary carousel-btn" id="steps-next" aria-label="Weiter">&rarr;</button>
                     </div>
                 </div>
             </div>
-            <p class="concept-disclaimer" data-i18n="screenshots.disclaimer">Diese Screens sind frühe Konzeptentwürfe zur Veranschaulichung der Bedienung und Funktionalitäten und repräsentieren nicht das finale Design.</p>
+            <p class="concept-disclaimer" data-i18n="screenshots.disclaimer">Echte Screenshots aus der App (Stand: September 2026).</p>
+        </div>
+    </section>
+
+    <!-- Extras: Timer & Notizen (bewusst kleiner als "So funktioniert's") -->
+    <section id="extras" class="extras-section">
+        <div class="container">
+            <h2 data-i18n="extras.title">Alles an einem Ort</h2>
+            <p class="extras-subtitle" data-i18n="extras.subtitle">Rein für dich – ohne Einfluss auf deinen Garten.</p>
+            <div class="extras-grid">
+                <div class="highlight-card extra-card">
+                    <img src="img/landingpage/feature_12_timer_de.webp" data-src-de="img/landingpage/feature_12_timer_de.webp" data-src-en="img/landingpage/feature_12_timer_en.webp" alt="Konzentriert arbeiten – mit Stoppuhr oder Countdown, direkt an deiner Aufgabe." data-i18n-alt="extra1.desc" loading="lazy" width="1080" height="1834">
+                    <div class="extra-text">
+                        <h4 data-i18n="extra1.title">Fokus-Timer</h4>
+                        <p data-i18n="extra1.desc">Konzentriert arbeiten – mit Stoppuhr oder Countdown, direkt an deiner Aufgabe.</p>
+                    </div>
+                </div>
+                <div class="highlight-card extra-card">
+                    <img src="img/landingpage/feature_13_notizblock_de.webp" data-src-de="img/landingpage/feature_13_notizblock_de.webp" data-src-en="img/landingpage/feature_13_notizblock_en.webp" alt="Gedanken und Listen notieren und kleine Gewohnheiten jeden Tag abhaken." data-i18n-alt="extra2.desc" loading="lazy" width="1080" height="1834">
+                    <div class="extra-text">
+                        <h4 data-i18n="extra2.title">Notizen &amp; Habits</h4>
+                        <p data-i18n="extra2.desc">Gedanken und Listen notieren und kleine Gewohnheiten jeden Tag abhaken.</p>
+                    </div>
+                </div>
+                <div class="highlight-card extra-card extra-card--lucky">
+                    <img src="img/landingpage/feature_14_lucky_sprueche_de.webp" data-src-de="img/landingpage/feature_14_lucky_sprueche_de.webp" data-src-en="img/landingpage/feature_14_lucky_sprueche_en.webp" alt="Deine Begleiterin im Garten – mit Tipps, Sprüchen und einem Tutorial, wann immer du Hilfe brauchst." data-i18n-alt="extra3.desc" loading="lazy" width="1600" height="1900">
+                    <div class="extra-text">
+                        <p data-i18n="extra3.desc">Deine Begleiterin im Garten – mit Tipps, Sprüchen und einem Tutorial, wann immer du Hilfe brauchst.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -261,6 +312,7 @@
                         <a href="https://www.linkedin.com/in/gwyneth-binz" target="_blank" class="btn btn-secondary" data-i18n="team.linkedin">LinkedIn Profil</a>
                     </div>
                 </div>
+                <!-- Karte Helmut Wacker vorerst ausgeblendet – zum Wiedereinblenden Kommentar entfernen
                 <div class="team-member">
                     <div class="team-image">
                         <img src="img/porträithelmut.jpg" alt="Helmut Wacker" loading="lazy">
@@ -272,6 +324,7 @@
                         <a href="https://www.linkedin.com/in/helmut-wacker-6b7b7141b/" target="_blank" class="btn btn-secondary" data-i18n="team.linkedin">LinkedIn Profil</a>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </section>

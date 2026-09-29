@@ -16,20 +16,26 @@ const translations = {
         'features.subtitle':     'Warum PixelSprout helfen kann',
         'features.core':         'Du hast große Ziele, aber irgendwie verliert sich alles im Alltag ?<br><br>PixelSprout verwandelt deine Ziele in einen interaktiven Pixel-Art-Garten. Jedes Ziel wird zu einem Bereich, der mit deinen Meilensteinen wächst. Mit visuellem Fortschritt strukturierst du komplexe Ziele spielerisch und siehst deinen Fortschritt greifbar vor dir. PixelSprout lädt dich ein, den Weg genauso zu genießen wie das Ziel → echtes Wachstum passiert im Prozess.<br><br><strong>Ein Zuhause für deine Ziele.</strong>',
         'howitworks.title':      'So funktioniert\'s',
-        'step1.title':           'Ziel Setzen',
-        'step1.desc':            'Definiere dein großes Ziel',
+        'step1.title':           'Ziel setzen',
+        'step1.desc':            'Definiere dein großes Ziel – in Sekunden angelegt.',
         'step2.title':           'Strukturieren',
-        'step2.desc':            'Teile es in Meilensteine auf',
+        'step2.desc':            'Teile es in Meilensteine auf.',
         'step3.title':           'Umsetzen',
-        'step3.desc':            'Arbeite an deinen Tasks',
-        'step4.title':           'Wachsen',
-        'step4.desc':            'Sehe deine Fortschritte!',
-        'concept.badge':         'Konzept',
-        'screenshot1':           'Start Screen',
-        'screenshot2':           'Ziel-Übersicht',
-        'screenshot3':           'Meilensteine',
-        'screenshot4':           'Aufgaben-Übersicht',
-        'screenshots.disclaimer':'Diese Screens sind frühe Konzeptentwürfe zur Veranschaulichung der Bedienung und Funktionalitäten und repräsentieren nicht das finale Design.',
+        'step3.desc':            'Erledige tägliche Aufgaben – ein Tipp genügt.',
+        'step4.title':           'Gießen',
+        'step4.desc':            'Jede erledigte Aufgabe gießt deinen Garten und hält ihn frisch.',
+        'step5.title':           'Wachsen',
+        'step5.desc':            'Mit jedem Meilenstein wächst dein Gartenbereich.',
+        'userflow.title':        'Vorschau',
+        'userflow.caption':      'Die App in 60 Sekunden',
+        'screenshots.disclaimer':'Echte Screenshots aus der App (Stand: September 2026).',
+        'extras.title':          'Alles an einem Ort',
+        'extras.subtitle':       'Rein für dich – ohne Einfluss auf deinen Garten.',
+        'extra1.title':          'Fokus-Timer',
+        'extra1.desc':           'Konzentriert arbeiten – mit Stoppuhr oder Countdown, direkt an deiner Aufgabe.',
+        'extra2.title':          'Notizen & Habits',
+        'extra2.desc':           'Gedanken und Listen notieren und kleine Gewohnheiten jeden Tag abhaken.',
+        'extra3.desc':           'Deine Begleiterin im Garten – mit Tipps, Sprüchen und einem Tutorial, wann immer du Hilfe brauchst.',
         'pixelart.title':        'Warum Pixel Art?',
         'pixelart.intro':        'Pixel Art ist mehr als ein Look — der Stil hat eine echte Wirkung auf Motivation und Wohlbefinden.',
         'pixelart.point1':       '<strong>Entspannend & vertraut —</strong> Pixel Art erinnert an Kindheit und Spiele. Diese nostalgische Ästhetik senkt die Hemmschwelle und macht es leichter, sich mit seinen Zielen auseinanderzusetzen.',
@@ -79,20 +85,26 @@ const translations = {
         'features.subtitle':     'Why PixelSprout can help',
         'features.core':         'You have big goals? But somehow everything gets lost in everyday life.<br><br>PixelSprout transforms your goals into an interactive pixel-art garden. Each goal becomes an area that grows with your milestones. With visual progress you structure complex goals playfully and see your achievements tangibly. PixelSprout invites you to enjoy the journey as much as the destination — because real growth happens in the process.<br><br><strong>A home for your goals.</strong>',
         'howitworks.title':      'How it works',
-        'step1.title':           'Set Goal',
-        'step1.desc':            'Define your big goal',
+        'step1.title':           'Set a goal',
+        'step1.desc':            'Define your big goal – created in seconds.',
         'step2.title':           'Structure',
-        'step2.desc':            'Break it into milestones',
-        'step3.title':           'Execute',
-        'step3.desc':            'Work on your tasks',
-        'step4.title':           'Grow',
-        'step4.desc':            'Watch your progress!',
-        'concept.badge':         'Concept',
-        'screenshot1':           'Start Screen',
-        'screenshot2':           'Goals Overview',
-        'screenshot3':           'Milestones',
-        'screenshot4':           'Tasks Overview',
-        'screenshots.disclaimer':'These screens are early concept drafts to illustrate the interface and functionalities and do not represent the final design.',
+        'step2.desc':            'Break it into milestones.',
+        'step3.title':           'Take action',
+        'step3.desc':            'Get daily tasks done – one tap is all it takes.',
+        'step4.title':           'Water',
+        'step4.desc':            'Every finished task waters your garden and keeps it fresh.',
+        'step5.title':           'Grow',
+        'step5.desc':            'With every milestone, your garden area grows.',
+        'userflow.title':        'Preview',
+        'userflow.caption':      'The app in 60 seconds',
+        'screenshots.disclaimer':'Real screenshots from the app (as of September 2026).',
+        'extras.title':          'Everything in one place',
+        'extras.subtitle':       'Just for you – they don\'t affect your garden.',
+        'extra1.title':          'Focus timer',
+        'extra1.desc':           'Stay focused – stopwatch or countdown, right on your task.',
+        'extra2.title':          'Notes & habits',
+        'extra2.desc':           'Jot down thoughts and lists, and tick off small daily habits.',
+        'extra3.desc':           'Your garden companion – with tips, sayings and a tutorial whenever you need help.',
         'pixelart.title':        'Why Pixel Art?',
         'pixelart.intro':        'Pixel Art is more than just a look — the style has a real effect on motivation and well-being.',
         'pixelart.point1':       '<strong>Relaxing & familiar —</strong> Pixel Art reminds us of childhood and games. This nostalgic aesthetic lowers the barrier and makes it easier to engage with your goals.',
@@ -141,6 +153,27 @@ function setLanguage(lang) {
     document.querySelectorAll(`[data-href-${lang}]`).forEach(el => {
         el.setAttribute('href', el.getAttribute(`data-href-${lang}`));
     });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (translations[lang][key] !== undefined) {
+            el.setAttribute('alt', translations[lang][key]);
+        }
+    });
+
+    document.querySelectorAll(`[data-poster-${lang}]`).forEach(el => {
+        el.setAttribute('poster', el.getAttribute(`data-poster-${lang}`));
+    });
+
+    // Bilder und Video-Quellen je Sprache; Videos nur neu laden, wenn sich etwas geändert hat
+    const changedVideos = new Set();
+    document.querySelectorAll(`[data-src-${lang}]`).forEach(el => {
+        const src = el.getAttribute(`data-src-${lang}`);
+        if (el.getAttribute('src') === src) return;
+        el.setAttribute('src', src);
+        if (el.tagName === 'SOURCE') changedVideos.add(el.parentElement);
+    });
+    changedVideos.forEach(video => video.load());
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);

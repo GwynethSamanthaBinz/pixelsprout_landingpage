@@ -27,13 +27,46 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all feature cards and steps
-document.querySelectorAll('.feature-card, .step').forEach(el => {
+// Observe all feature cards and the how-it-works block
+document.querySelectorAll('.feature-card, .how-layout').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
+
+// Safari/iOS: kein transparentes WebM → Hero-Video durch Standbild ersetzen,
+// beim User-Journey-Video direkt die MP4 nehmen
+if (document.documentElement.classList.contains('no-alpha-video')) {
+    document.querySelectorAll('.hero-phone-video').forEach(v => v.remove());
+    document.querySelectorAll('.userflow-video source[type="video/webm"]').forEach(s => s.remove());
+    document.querySelectorAll('.userflow-video').forEach(v => v.load());
+}
+
+// Schritte-Karussell: Pfeil-Buttons scrollen um eine Karte
+function initStepsCarousel() {
+    const track = document.getElementById('steps-track');
+    const prev = document.getElementById('steps-prev');
+    const next = document.getElementById('steps-next');
+    if (!track || !prev || !next) return;
+
+    const stepWidth = () => {
+        const step = track.querySelector('.step');
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        return step ? step.offsetWidth + gap : track.clientWidth;
+    };
+
+    const updateButtons = () => {
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    };
+
+    prev.addEventListener('click', () => track.scrollBy({ left: -stepWidth(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left: stepWidth(), behavior: 'smooth' }));
+    track.addEventListener('scroll', updateButtons, { passive: true });
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
+}
 
 // Timelapse Play/Pause
 function toggleTimelapse(btn) {
@@ -272,7 +305,8 @@ function initMobileNav() {
 document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initFallingSunflowers();
-    
+    initStepsCarousel();
+
     // Easter Egg: Konami Code für Bonus-Nachricht
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;

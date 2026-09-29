@@ -13,6 +13,8 @@
 .features-single h2,
 .feature-highlights h3,
 .how-it-works h2,
+.userflow h3,
+.extras-section h2,
 .pixelart-why h2,
 .draw-video-area h2,
 .team-section h2,
@@ -152,19 +154,9 @@ body {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #e8d6ff 0%, #d4c8f5 45%, #d6e4ff 100%);
-}
-
-.hero-bg-video {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    height: 100%;
-    width: auto;
-    z-index: 0;
-    transform: translateX(-50%) translateZ(0);
-    -webkit-transform: translateX(-50%) translateZ(0);
-    filter: contrast(1.08) saturate(1.05);
+    background:
+        url("../img/landingpage/hero_background.jpg") center / cover no-repeat,
+        linear-gradient(135deg, #e8d6ff 0%, #d4c8f5 45%, #d6e4ff 100%);
 }
 
 .hero-overlay {
@@ -173,16 +165,6 @@ body {
 
 /* Hamburger button – hidden on desktop */
 .nav-toggle {
-    display: none;
-}
-
-/* Mobile-only video preview – hidden on desktop */
-.hero-video-preview {
-    display: none;
-}
-
-/* Mobile-only background – hidden on desktop */
-.hero-bg-mobile {
     display: none;
 }
 
@@ -314,10 +296,13 @@ body {
 }
 
 .phone-wrapper video,
+.hero-image video,
 .hero-image img {
     max-width: 100%;
     max-height: 75vh;
+    width: auto;
     height: auto;
+    aspect-ratio: 1080 / 1834;
     display: block;
     animation: slideInRight 0.8s ease-out;
 }
@@ -338,7 +323,6 @@ body {
     padding: 100px 0;
     background: white;
     border-radius: 30px 30px 0 0;
-    margin-top: 60px;
     position: relative;
     overflow: hidden;
 }
@@ -471,12 +455,122 @@ body {
     line-height: 1.8;
 }
 
-.steps {
+/* Safari/iOS: Standbild statt transparentem WebM */
+.hero-image .hero-phone-fallback {
+    display: none;
+}
+
+.no-alpha-video .hero-image .hero-phone-fallback {
+    display: block;
+}
+
+/* Links User-Journey-Video, rechts Schritte-Karussell */
+/* Video-Spalte = 1,2 Karten-Breiten: Video etwas größer als die Screens,
+   Rahmen so hoch wie die Schritte (Zeile 1: Video | Karten, Zeile 2: – | Pfeile) */
+.how-layout {
+    --how-gap: 60px;
+    display: grid;
+    grid-template-columns: calc((100% - 40px - var(--how-gap)) * 1.2 / 4.2) 1fr;
+    column-gap: var(--how-gap);
+    row-gap: 0.8rem;
+    align-items: end;
+}
+
+.steps-carousel {
+    display: contents;
+}
+
+/* Lila Rahmen um das Video; ragt um Padding + Rahmen nach außen,
+   damit das Video selbst bündig mit den Screens bleibt */
+.userflow {
+    --frame-pad: 18px;
+    --frame-border: 3px;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: stretch;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    gap: 0.6rem;
+    text-align: center;
+    margin: 0 calc(-1 * (var(--frame-pad) + var(--frame-border))) calc(-1 * (var(--frame-pad) + var(--frame-border)));
+    padding: 24px var(--frame-pad) var(--frame-pad);
+    border: var(--frame-border) solid var(--primary-color);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 20px rgba(139, 123, 200, 0.3);
+}
+
+.userflow h3 {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    line-height: 2;
+}
+
+.userflow-caption {
+    color: #3a3a4a;
+}
+
+.userflow-video {
+    display: block;
+    margin-top: auto;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    aspect-ratio: 1080 / 1834;
+    background: transparent;
+    border-radius: 14px;
+}
+
+/* Steuerleiste (Chrome/Edge/Safari): heller Lila-Verlauf statt Schwarz, runde Ecken */
+.userflow-video::-webkit-media-controls-enclosure {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.userflow-video::-webkit-media-controls-panel {
+    background-image: linear-gradient(to bottom, rgba(139, 123, 200, 0) 0%, rgba(139, 123, 200, 0.55) 60%, rgba(107, 90, 176, 0.8) 100%);
+}
+
+.steps {
+    --steps-visible: 3;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    display: flex;
     gap: 20px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 4px;
+}
+
+.steps::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-nav {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.carousel-btn {
+    padding: 8px 20px;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+    background: white;
+    color: var(--primary-color);
 }
 
 .screenshots-grid {
@@ -510,20 +604,6 @@ body {
     width: 100%;
 }
 
-.concept-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(139, 123, 200, 0.88);
-    color: white;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.38rem;
-    letter-spacing: 1px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    z-index: 1;
-}
-
 .screenshot-label {
     font-family: 'Press Start 2P', monospace;
     font-size: 0.42rem;
@@ -544,8 +624,8 @@ body {
 }
 
 .step {
-    flex: 1;
-    min-width: 180px;
+    flex: 0 0 calc((100% - (var(--steps-visible) - 1) * 20px) / var(--steps-visible));
+    scroll-snap-align: start;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -556,23 +636,20 @@ body {
 .step .screenshot-placeholder {
     margin-top: auto;
     width: 100%;
-    height: 580px;
     background: transparent;
     border: none;
     border-radius: 0;
+    overflow: visible;
 }
 
+/* Handyrahmen ist schon im Bild */
 .step .screenshot-placeholder img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
-    clip-path: inset(4% 0 4% 0);
-}
-
-.step .concept-badge {
-    top: 8px;
-    right: 8px;
+    max-width: 300px; /* so groß wie das User-Journey-Video */
+    margin: 0 auto;
+    height: auto;
+    aspect-ratio: 1080 / 1834;
+    border-radius: 0;
 }
 
 .step-number {
@@ -590,7 +667,7 @@ body {
 }
 
 .step h3 {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: var(--dark-color);
     margin-bottom: 0.5rem;
     line-height: 2;
@@ -605,6 +682,107 @@ body {
     color: var(--primary-color);
     flex-shrink: 0;
     display: none;
+}
+
+/* Extras: Timer & Notizen – ruhiger Zusatz unter "So funktioniert's" */
+.extras-section {
+    padding: 20px 0 90px;
+    background: #CFE2FC;
+}
+
+.extras-section h2 {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    line-height: 1.8;
+}
+
+.extras-subtitle {
+    color: #3a3a4a;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+/* Desktop: drei Karten nebeneinander, Bild oben, Screens so groß wie bei "So funktioniert's" */
+.extras-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.extra-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    text-align: center;
+}
+
+.extra-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Handyrahmen ist schon im Bild */
+.extra-card img {
+    display: block;
+    width: 250px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1080 / 1834;
+    flex-shrink: 0;
+}
+
+.extra-card p {
+    color: #3a3a4a;
+}
+
+/* Lucky-Karte: Bild 1600×1900 mit Sprechblasen neben dem Handy, ca. 1,5× breiter,
+   damit das Handy gleich groß wirkt; Blasen dürfen ins Karten-Padding ragen */
+.extra-card--lucky {
+    overflow: visible;
+}
+
+.extra-card--lucky img {
+    width: 375px;
+    max-width: calc(100% + 40px);
+    aspect-ratio: 1600 / 1900;
+}
+
+/* Tablet: zwei Karten nebeneinander, Bild links, Lucky-Karte in eigener Zeile */
+@media (max-width: 1000px) {
+    .extras-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .extra-card {
+        flex-direction: row;
+        gap: 24px;
+        text-align: left;
+    }
+
+    .extra-card img {
+        width: 45%;
+        max-width: 220px;
+    }
+
+    .extra-card--lucky {
+        grid-column: 1 / -1;
+        justify-content: center;
+    }
+
+    .extra-card--lucky img {
+        width: 100%;
+        max-width: 292px; /* 1,5 × die ~195 px der anderen Bilder */
+    }
+
+    .extra-card--lucky .extra-text {
+        max-width: 360px;
+    }
 }
 
 /* Team Section */
@@ -625,6 +803,13 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+}
+
+/* Nur eine Karte: mittig statt links in der halben Breite */
+.team-grid > .team-member:only-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 580px;
 }
 
 .team-member {
@@ -833,6 +1018,31 @@ body {
     color: white;
 }
 
+/* Tablet & Handy: Video oben, Schritte darunter */
+@media (max-width: 1000px) {
+    .how-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .userflow,
+    .steps,
+    .carousel-nav {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .userflow {
+        justify-self: center;
+        width: 100%;
+        max-width: calc(300px + 2 * (var(--frame-pad) + var(--frame-border)));
+        margin: 0 auto 2.5rem;
+    }
+
+    .steps {
+        --steps-visible: 3;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     /* Navbar: Brand links, Lang + Hamburger rechts */
@@ -953,7 +1163,13 @@ body {
 
     .hero-image {
         max-width: 300px;
-        margin: 0 auto;
+        margin: 2rem auto 0;
+    }
+
+    /* Handy-Mockup unter dem Hero-Text – zentriert */
+    .hero-image video,
+    .hero-image img {
+        max-height: 528px;
     }
 
     /* Features */
@@ -989,10 +1205,37 @@ body {
         padding: 25px;
     }
 
-    /* Steps */
-    .steps {
+    /* Extras: Karten untereinander, Bild über dem Text */
+    .extras-section h2 {
+        font-size: 0.9rem;
+    }
+
+    .extras-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .extra-card {
         flex-direction: column;
-        align-items: center;
+        text-align: center;
+    }
+
+    .extra-card img {
+        width: 100%;
+    }
+
+    /* 1,5 × die 220 px der anderen Bilder */
+    .extra-card--lucky img {
+        max-width: 330px;
+    }
+
+    /* Steps: erst Video, darunter 1 Schritt zum Wischen */
+    .steps {
+        --steps-visible: 1;
+    }
+
+    .step .screenshot-placeholder img {
+        max-width: 300px;
+        margin: 0 auto;
     }
 
     .arrow {
@@ -1076,10 +1319,6 @@ body {
         padding: 60px 0;
     }
 
-    .step .screenshot-placeholder {
-        height: 528px;
-    }
-
     .draw-inner {
         display: flex;
         flex-direction: column;
@@ -1119,27 +1358,6 @@ body {
         grid-template-columns: 1fr;
     }
 
-    /* Desktop-Hintergrundvideo auf Handy verstecken */
-    .hero-bg-video {
-        display: none;
-    }
-
-    /* Separater Hintergrund nur auf Handy */
-    .hero-bg-mobile {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        opacity: 1;
-        z-index: 0;
-    }
-
     .hero-overlay {
         display: block;
         position: absolute;
@@ -1149,31 +1367,6 @@ body {
         bottom: 0;
         background: rgba(245, 240, 255, 0.15);
         z-index: 1;
-    }
-
-    /* Homescreen-Video unter dem Hero-Text – zentriert */
-    .hero-video-preview {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: 528px;
-        overflow: hidden;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(139, 123, 200, 0.35);
-        border: 2px solid rgba(139, 123, 200, 0.25);
-        margin-top: 2rem;
-        z-index: 2;
-    }
-
-    .hero-video-preview video {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
     }
 
     .hero-buttons-primary {
@@ -1257,6 +1450,10 @@ body {
 
     #survey h2 {
         font-size: 1rem;
+    }
+
+    .extras-section h2 {
+        font-size: 0.85rem;
     }
 
     .core-idea {
