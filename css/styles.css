@@ -62,17 +62,17 @@ body {
 }
 
 /* Language Switcher */
-/* Sprachumschalter als Pille im Stil der Seiten-Buttons:
-   aktive Sprache gefüllt wie .btn-primary, die andere wie .btn-secondary */
+/* Sprachumschalter als Pille im Stil der Seiten-Buttons, in Orange
+   (Komplementärfarbe zum Lila, damit er auffällt) */
 .lang-switcher {
     display: flex;
     align-items: center;
     gap: 3px;
     padding: 3px;
     background: white;
-    border: 2px solid var(--primary-color);
+    border: 2px solid #F5A623;
     border-radius: 999px;
-    box-shadow: 0 4px 12px rgba(139, 123, 200, 0.25);
+    box-shadow: 0 4px 12px rgba(245, 166, 35, 0.3);
 }
 
 .lang-btn {
@@ -82,7 +82,7 @@ body {
     font-family: 'Press Start 2P', monospace;
     font-size: 0.65rem;
     line-height: 1;
-    color: var(--primary-color);
+    color: #D98200;
     cursor: pointer;
     padding: 7px 11px;
     letter-spacing: 1px;
@@ -90,13 +90,13 @@ body {
 }
 
 .lang-btn:hover {
-    background: rgba(139, 123, 200, 0.15);
+    background: rgba(255, 199, 95, 0.25);
 }
 
 .lang-btn.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #FFB33F, #F08C00);
     color: white;
-    box-shadow: 0 3px 8px rgba(139, 123, 200, 0.35);
+    box-shadow: 0 3px 8px rgba(240, 140, 0, 0.4);
 }
 
 /* Trennstrich wird in der Pille nicht mehr gebraucht */
