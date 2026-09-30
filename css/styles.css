@@ -1685,8 +1685,18 @@ body {
 }
 
 @media (max-width: 480px) {
+    /* Titel größer (vorher 0.8rem); Platz dafür kommt vom schmaleren
+       Sprachumschalter und dem etwas kleineren Logo – alles bleibt in einer Zeile */
     .nav-brand {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .logo-icon--nav-rounded {
+        height: 2.8rem;
+    }
+
+    .navbar .container {
+        gap: 0.4rem;
     }
 
     .nav-links {
@@ -1694,9 +1704,23 @@ body {
         gap: 0.4rem;
     }
 
+    /* Sehr schmale Handys: alte Titelgröße, damit der Umschalter in der ersten Zeile bleibt */
+    @media (max-width: 374px) {
+        .nav-brand {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* schmalere Pille auf dem Handy */
+    .lang-switcher {
+        gap: 1px;
+        padding: 2px;
+    }
+
     .lang-btn {
         font-size: 0.55rem;
-        padding: 6px 9px;
+        padding: 6px 6px;
+        letter-spacing: 0;
     }
 
     .hero-content h1 {
