@@ -1350,6 +1350,7 @@ body {
         gap: 5px;
         background: transparent;
         border: 2px solid rgba(139, 123, 200, 0.55);
+        border-radius: 10px;
         padding: 8px 9px;
         cursor: pointer;
         order: 3;
