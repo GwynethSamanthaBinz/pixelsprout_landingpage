@@ -2141,6 +2141,11 @@ body {
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
+    /* Über dem (position: relative) Video-Rahmen liegen: beim großen Video
+       ist die Leiste in dessen weggeschnittenen Rand hochgezogen und war
+       sonst von ihm verdeckt, Klicks kamen nicht an. */
+    position: relative;
+    z-index: 1;
 }
 
 /* Beim großen Video sind unten 8 % der Höhe weggeschnitten (clip-path), belegen aber
