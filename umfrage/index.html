@@ -5,26 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PixelSprout Beta-Feedback</title>
   <meta name="robots" content="noindex">
-  <!-- Once the questionnaire is published, put its link into FORM_URL:
-       the page then forwards straight to it. Empty = placeholder text. -->
-  <script>
-    var FORM_URL = '';
-    if (FORM_URL) location.replace(FORM_URL);
-  </script>
   <style>
     body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
       background: linear-gradient(#BFE0F5, #DCC9F0); font-family: system-ui, sans-serif; color: #2b2540; }
     .box { background: #fff; border: 3px solid #543d90; border-radius: 6px; padding: 28px 24px; margin: 16px;
-      max-width: 360px; text-align: center; box-shadow: 0 4px 0 #9f90e0; }
-    h1 { font-size: 24px; margin: 0 0 12px; }
-    p { margin: 0; line-height: 1.5; }
+      max-width: 380px; text-align: center; box-shadow: 0 4px 0 #9f90e0; }
+    h1 { font-size: 24px; margin: 0 0 16px; }
+    p { margin: 0 0 12px; line-height: 1.5; }
+    .en { color: #6b6585; font-size: 15px; }
+    img { width: 100%; max-width: 300px; border-radius: 12px; margin: 4px 0 16px; }
+    .button { display: inline-block; margin: 8px 0 16px; padding: 12px 22px; background: #efeaff; color: #2b2540;
+      border: 3px solid #a98cf5; border-bottom-width: 6px; border-radius: 4px; font-weight: 700; text-decoration: none; }
+    .contact { font-size: 14px; color: #6b6585; margin: 0; }
+    .contact a { color: #543d90; }
+    [hidden] { display: none; }
   </style>
 </head>
 <body>
   <div class="box">
     <h1>PixelSprout Beta-Feedback</h1>
-    <p>Der Fragebogen ist ab dem 8.11. hier erreichbar. Danke fürs Testen!</p>
-    <p style="margin-top:12px;color:#6b6585">The questionnaire will be available here from 8 November. Thanks for testing!</p>
+    <img src="../img/umfrage_homescreen_icon.png" alt="Das PixelSprout-Icon mit dem Schriftzug BETA-TEST auf dem Home-Bildschirm">
+    <p>Danke, dass du die Beta-Version von PixelSprout getestet hast, die App mit diesem Icon auf deinem Home-Bildschirm!</p>
+    <p class="en">Thank you for testing the beta version of PixelSprout, the app with this icon on your home screen!</p>
+
+    <!-- Once the questionnaire is published, put its link (ending in
+         /viewform) into FORM_URL: the button then appears. Empty = the
+         "available from 8 November" note. -->
+    <div id="soon">
+      <p>Der Fragebogen ist ab dem 8.11. hier erreichbar.</p>
+      <p class="en">The questionnaire will be available here from 8 November.</p>
+    </div>
+    <a id="form" class="button" hidden>Zum Fragebogen / Open questionnaire</a>
+
+    <p class="contact">Bei Fragen und Anregungen melde dich jederzeit bei mir unter:<br>
+      Questions or ideas? Contact me anytime at:<br>
+      <a href="mailto:pixelsprout.app@gmail.com">pixelsprout.app@gmail.com</a></p>
   </div>
+  <script>
+    var FORM_URL = '';
+    if (FORM_URL) {
+      var link = document.getElementById('form');
+      link.href = FORM_URL;
+      link.hidden = false;
+      document.getElementById('soon').hidden = true;
+    }
+  </script>
 </body>
 </html>
