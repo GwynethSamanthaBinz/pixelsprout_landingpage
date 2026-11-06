@@ -50,13 +50,21 @@
     </section>
   </div>
   <script>
-    // Once the questionnaire is published, put its link (ending in
-    // /viewform) here: the buttons then replace the "available soon" notes.
-    var FORM_URL = '';
-    if (FORM_URL) {
-      document.querySelectorAll('.form').forEach(function (a) { a.href = FORM_URL; a.hidden = false; });
-      document.querySelectorAll('.soon').forEach(function (p) { p.hidden = true; });
-    }
+    // One questionnaire per language (Google Forms, /viewform links). A
+    // section's button appears as soon as its link is set; empty = the
+    // "available soon" note stays.
+    var FORM_URLS = {
+      de: 'https://docs.google.com/forms/d/e/1FAIpQLSfa6N2X0ScjmehuQzqrPPVV2UKqs3rhAV2LBuLgjzL3aRjYoA/viewform',
+      en: 'https://docs.google.com/forms/d/e/1FAIpQLScbrA1gHw9gpwb5ANKBEgY83mrZz1gbPIEGtNFG-WfKLCmwHA/viewform',
+    };
+    document.querySelectorAll('section[lang]').forEach(function (section) {
+      var url = FORM_URLS[section.lang];
+      if (!url) return;
+      var link = section.querySelector('.form');
+      link.href = url;
+      link.hidden = false;
+      section.querySelector('.soon').hidden = true;
+    });
   </script>
 </body>
 </html>
